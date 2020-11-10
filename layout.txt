@@ -1,0 +1,31 @@
+Athletes and trainers can log in
+
+USERS:
+when new athlete account is made, an empty profile is generated for them
+
+ATHLETES:
+see their own profile, but not edit anything
+see visits on their profile and comments on visits
+make comments on visits
+EXTRA:
+daily check-in
+messaging trainer/request visit
+
+TRAINERS:
+see all profiles
+edit all profiles
+create new visits for an athlete
+EXTRA:
+edit visits?
+
+PAGES:
+landing page
+sign-in page
+sign-up page
+athlete profile page (view-only)
+admin athlete profile page (trainer-only, can edit)
+profile list page (trainer sees all profiles)
+new visits page (trainer can make a visit)
+
+EXTRA:
+scheduling appointments
