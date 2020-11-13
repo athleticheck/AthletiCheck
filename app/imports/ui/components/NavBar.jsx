@@ -11,9 +11,11 @@ class NavBar extends React.Component {
   render() {
     const menuStyle = { marginBottom: '10px' };
     return (
-      <Menu style={menuStyle} attached="top" borderless inverted>
+      <Menu style={menuStyle} attached="top" borderless >
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
-          <Header inverted as='h1'>AthletiCheck</Header>
+          <div id='fontColor'>
+          <Header as='h1'>AthletiCheck</Header>
+          </div>
         </Menu.Item>
         {this.props.currentUser ? (
             [<Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
