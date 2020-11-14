@@ -1,3 +1,8 @@
 .ui.attached.menu{
   background: #0F5938;
 }
+.ui.borderless.middlemenu.menu {
+  box-shadow: none;
+  border: none;
+  margin: 0px;
+}

@@ -18,6 +18,7 @@ import AdminAthleteProfile from '../pages/AdminAthleteProfile';
 import EditProfile from '../pages/EditProfile';
 import AddVisit from '../pages/AddVisit';
 import ProfileList from '../pages/ProfileList';
+import MiddleMenu from '../components/MiddleMenu';
 /* OLD IMPORTS, DELETE BEFORE FINAL SUBMISSION */
 import ListStuffOLD from '../pages/ListStuff';
 import ListStuffAdminOLD from '../pages/ListStuffAdmin';
@@ -30,7 +31,8 @@ class App extends React.Component {
     return (
         <Router>
           <div>
-            <NavBar/>                                                         {/* EDIT NavBar */}
+            <NavBar/>                                                        {/* EDIT NavBar */}
+            <MiddleMenu/>
             <Switch>
               {/* RE-USED PATHS */}
               <Route exact path="/" component={Landing}/>
