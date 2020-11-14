@@ -1,9 +1,12 @@
-.background-landing {
-  background: url('images/officialBackground.png');
-  background-size: 1352px 756px;
+.background-landing { /* delete this */
+  /*background: url('images/officialBackground.png');*/
+  /*background-size: 1352px 756px;*/
 }
+/* NavBar */
 .ui.attached.menu {
-  background: #0F5938;
+  background: white;
+  border: none !important;
+  border-radius: 0 !important;
 }
 .ui.borderless.middlemenu.menu {
   box-shadow: none;
@@ -13,4 +16,9 @@
 
 .ui.container.profile-page-container {
   padding-top: 30px;
+}
+
+.background-landing {
+  margin: 0;
+  padding: 0;
 }

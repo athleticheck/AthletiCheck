@@ -32,7 +32,7 @@ class App extends React.Component {
         <Router>
           <div>
             <NavBar/>                                                        {/* EDIT NavBar */}
-            <MiddleMenu/>
+            {/*<MiddleMenu/>*/}
             <Switch>
               {/* RE-USED PATHS */}
               <Route exact path="/" component={Landing}/>

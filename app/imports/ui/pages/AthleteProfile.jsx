@@ -8,7 +8,7 @@ class AthleteProfile extends React.Component {
   render() {
     return (
         <Container className="profile-page-container">
-          <Header as="h1" textAlign="center">
+          <Header as="h1" textAlign="center" inverted>
             Firstname Lastname
           </Header>
           <Table singleLine unstackable>
