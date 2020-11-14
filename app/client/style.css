@@ -1,6 +1,8 @@
 .background-landing { /* delete this */
-  background: url('images/officialBackground.png');
-  /*background-size: 1352px 756px;*/
+  /* background: url('images/officialBackground.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 /* NavBar */
 .ui.attached.menu {
@@ -21,4 +23,9 @@
 .background-landing {
   margin: 0;
   padding: 0;
+}
+
+#landing-grid
+{
+  margin-top: -70px;
 }
