@@ -12,16 +12,12 @@ class AthleteProfile extends React.Component {
             <Card.Content textAlign='center'>
               <Grid columns={3}>
                 <Grid.Row>
-                  <Grid.Column>
-                  <hr/>
-                </Grid.Column>
+                  <Grid.Column><hr/></Grid.Column>
                   <Grid.Column>
                     <Image centered size='medium' circular
                            src="https://www.ics.hawaii.edu/wp-content/uploads/2018/08/peter-sadowski_300x300.jpg"/>
                   </Grid.Column>
-                  <Grid.Column>
-                    <hr/>
-                  </Grid.Column>
+                  <Grid.Column><hr/></Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
                   <Grid.Column><hr/></Grid.Column>
@@ -33,7 +29,7 @@ class AthleteProfile extends React.Component {
               </Grid>
             </Card.Content>
             <Card.Content extra>
-              <Table singleLine unstackable inverted>
+              <Table singleLine stackable inverted>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell width={3}>Sport</Table.HeaderCell>
@@ -57,6 +53,8 @@ class AthleteProfile extends React.Component {
               </Table>
             </Card.Content>
           </Card>
+          <Table columns={2}>
+          </Table>
         </Container>
     );
   }
