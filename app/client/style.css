@@ -1,4 +1,8 @@
-.ui.attached.menu{
+.background-landing {
+  background: url('images/officialBackground.png');
+  background-size: 1352px 756px;
+}
+.ui.attached.menu {
   background: #0F5938;
 }
 .ui.borderless.middlemenu.menu {
