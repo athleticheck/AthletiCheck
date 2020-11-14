@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Table, Card, Image, Header, Grid } from 'semantic-ui-react';
+import { Container, Table, Card, Image, Header, Grid, Divider } from 'semantic-ui-react';
 
 /** Renders the Page for adding a document. */
 class AthleteProfile extends React.Component {
@@ -55,6 +55,10 @@ class AthleteProfile extends React.Component {
           </Card>
           <Table columns={2}>
           </Table>
+          <Divider horizontal>
+            <Header as='h1' textAlign='center' inverted>VISITS</Header>
+          </Divider>
+          No visits! (make a &quot;no visits&quot; comment/card by default)
         </Container>
     );
   }
