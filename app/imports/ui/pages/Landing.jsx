@@ -9,18 +9,18 @@ class Landing extends React.Component {
     return (
         <div className='background-landing'>
           <Image src={backgroundImage} fluid/>
-          <Grid verticalAlign='middle' textAlign='center'>
-            <Grid.Column width={4} id='landing-grid' color='red' style={menuStyle}>
+          <Grid container columns={3} verticalAlign='middle' textAlign='center'>
+            <Grid.Column id='landing-grid' style={menuStyle}>
               <Icon name='users' size='huge' />
               <h1>Athlete Details</h1>
               <h3>This platform allows a list of Athletes at your hands.</h3>
             </Grid.Column>
-            <Grid.Column width={4} id='landing-grid' color='red' style={menuStyle}>
+            <Grid.Column id='landing-grid' style={menuStyle}>
               <Icon name='file alternate' size='huge' />
               <h1>Communication</h1>
               <h3>For each contact, you can save their sport, name, number, age, weight, height and major.</h3>
             </Grid.Column>
-            <Grid.Column width={4} id='landing-grid' color='red' style={menuStyle}>
+            <Grid.Column id='landing-grid' style={menuStyle}>
               <Icon name='calendar check' size='huge' />
               <h1>Timestamped Notes</h1>
               <h3>Each time you visit with an Athlete, you can write notes to summarize the visit.</h3>
