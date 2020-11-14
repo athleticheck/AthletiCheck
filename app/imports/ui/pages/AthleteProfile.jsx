@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Table, Card, Image, Header } from 'semantic-ui-react';
+import { Container, Table, Card, Image, Header, Grid } from 'semantic-ui-react';
 
 /** Renders the Page for adding a document. */
 class AthleteProfile extends React.Component {
@@ -10,11 +10,29 @@ class AthleteProfile extends React.Component {
         <Container className='profile-page-container'>
           <Card fluid centered>
             <Card.Content textAlign='center'>
-              <Image centered size='medium' circular
-                     src="https://www.ics.hawaii.edu/wp-content/uploads/2018/08/peter-sadowski_300x300.jpg"/>
+              <Grid columns={3}>
+                <Grid.Row>
+                  <Grid.Column>
+                  <hr/>
+                </Grid.Column>
+                  <Grid.Column>
+                    <Image centered size='medium' circular
+                           src="https://www.ics.hawaii.edu/wp-content/uploads/2018/08/peter-sadowski_300x300.jpg"/>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <hr/>
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column><hr/></Grid.Column>
+                  <Grid.Column>
+                    <Header as='h1' textAlign='center'>Peter Sadowski</Header>
+                  </Grid.Column>
+                  <Grid.Column><hr/></Grid.Column>
+                </Grid.Row>
+              </Grid>
             </Card.Content>
             <Card.Content extra>
-              <Header as='h1' textAlign='center'>Peter Sadowski</Header>
               <Table singleLine unstackable inverted>
                 <Table.Header>
                   <Table.Row>
