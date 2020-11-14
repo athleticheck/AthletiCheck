@@ -7,7 +7,7 @@ class Landing extends React.Component {
   render() {
     return (
         <div className='background-landing'>
-          <Image src={backgroundImage} fluid/>
+          <Image id='bgPic' src={backgroundImage} fluid/>
           <Grid verticalAlign='middle' textAlign='center'>
             <Grid.Column width={4} id='landing-grid' color='red'>
               <Icon name='users' size='huge' />
