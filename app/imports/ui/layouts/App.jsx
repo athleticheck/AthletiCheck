@@ -23,6 +23,7 @@ import ListStuffOLD from '../pages/ListStuff';
 import ListStuffAdminOLD from '../pages/ListStuffAdmin';
 import AddStuffOLD from '../pages/AddStuff';
 import EditStuffOLD from '../pages/EditStuff';
+import AboutUs from '../pages/AboutUs';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -43,6 +44,7 @@ class App extends React.Component {
               <Route path="/edit-profile" component={EditProfile}/>           {/* should be admin protected */}   {/* rename path to include _id */}
               <Route path="/add-visit" component={AddVisit}/>                 {/* should be admin protected */}
               <Route path="/profile-list" component={ProfileList}/>           {/* should be admin protected */}
+              <Route path="/about" component={AboutUs}/>
               {/* OLD PATHS, DELETE BEFORE FINAL SUBMISSION */}
               <ProtectedRoute path="/list" component={ListStuffOLD}/>
               <ProtectedRoute path="/add" component={AddStuffOLD}/>

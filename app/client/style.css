@@ -33,3 +33,12 @@
 #right-nav-bar {
   padding: 0px;
 }
+#about-left {
+ /* background-color: white; */
+ color: white;
+}
+
+#about-left > h1 {
+  color: white;
+  margin-top: 30px;
+}
