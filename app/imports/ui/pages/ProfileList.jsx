@@ -7,10 +7,9 @@ class ProfileList extends React.Component {
   /** Render the Profile page */
   render() {
     return (
-        <body>
-        <Divider hidden />
         <Container>
-          <Table basic='very' size='large' celled padded>
+          <Divider hidden />
+          <Table size='large' celled padded color='white'>
             <Table.Header fullWidth>
               <Table.Row>
                 <Table.HeaderCell textAlign='center'>Athlete</Table.HeaderCell>
@@ -84,9 +83,8 @@ class ProfileList extends React.Component {
                 <Table.Cell>Computer Science</Table.Cell>            </Table.Row>
             </Table.Body>
           </Table>
+          <Divider hidden />
         </Container>
-        <Divider hidden />
-        </body>
     );
   }
 }
