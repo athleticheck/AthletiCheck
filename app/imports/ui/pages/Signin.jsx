@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
-import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Message, Segment, Divider, Image, Table } from 'semantic-ui-react';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -43,10 +43,13 @@ export default class Signin extends React.Component {
     // Otherwise return the Login form.
     return (
       <Container id="signin-page">
+        <Divider hidden />
+        <Table>
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Header as="h2" textAlign="center">
-              Login to your account
+            <Image src='/images/smallLogo.png' size='small' centered/>
+            <Header as="h1" textAlign="center">
+              Login
             </Header>
             <Form onSubmit={this.submit}>
               <Segment stacked>
@@ -87,6 +90,8 @@ export default class Signin extends React.Component {
             )}
           </Grid.Column>
         </Grid>
+        <Divider hidden />
+        </Table>
       </Container>
     );
   }
