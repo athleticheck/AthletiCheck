@@ -1,22 +1,32 @@
 import React from 'react';
-import { Grid, Image } from 'semantic-ui-react';
+import { Grid, Icon, Image } from 'semantic-ui-react';
 
+const backgroundImage = '../images/officialBackground.png';
+const menuStyle = { size: '205px 300px' };
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
   render() {
     return (
-        <Grid id='landing-page' verticalAlign='middle' textAlign='center' container>
-
-          <Grid.Column width={4}>
-            <Image size='small' circular src="/images/meteor-logo.png"/>
-          </Grid.Column>
-
-          <Grid.Column width={8}>
-            <h1>Welcome to this template</h1>
-            <p>Now get to work and modify this app!</p>
-          </Grid.Column>
-
-        </Grid>
+        <div className='background-landing'>
+          <Image src={backgroundImage} fluid/>
+          <Grid container columns={3} verticalAlign='middle' textAlign='center'>
+            <Grid.Column id='landing-grid' style={menuStyle}>
+              <Icon name='users' size='huge' />
+              <h1>Athlete Details</h1>
+              <h3>This platform allows a list of Athletes at your hands.</h3>
+            </Grid.Column>
+            <Grid.Column id='landing-grid' style={menuStyle}>
+              <Icon name='file alternate' size='huge' />
+              <h1>Communication</h1>
+              <h3>For each contact, you can save their sport, name, number, age, weight, height and major.</h3>
+            </Grid.Column>
+            <Grid.Column id='landing-grid' style={menuStyle}>
+              <Icon name='calendar check' size='huge' />
+              <h1>Timestamped Notes</h1>
+              <h3>Each time you visit with an Athlete, you can write notes to summarize the visit.</h3>
+            </Grid.Column>
+          </Grid>
+        </div>
     );
   }
 }
