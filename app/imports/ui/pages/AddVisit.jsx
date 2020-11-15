@@ -9,7 +9,7 @@ class AddVisit extends React.Component {
     return (
         <div>
           <Header as="h1">Add Visit Page</Header>
-          <Header as="h3">Assigned to Franz OR Andy</Header>
+          <Header as="h3">Assigned to Franz</Header>
         </div>
     );
   }
