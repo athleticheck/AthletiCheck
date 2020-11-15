@@ -24,9 +24,10 @@ class NavBar extends React.Component {
         ) : ''}
         {/** ------RIGHT SIDE OF NAVBAR----- */}
         {this.props.currentUser === '' ? (
-            <Menu.Item position="right"> {/* zero padding!!! */}
+            <Menu.Item position="right" id="right-nav-bar"> {/* zero padding!!! */}
               <Menu.Item name='Join' as={NavLink} exact to="/signup" content='JOIN'/>
-              <Menu.Item name='Signin' as={NavLink} exact to="/signin" content='SIGNIN'/>
+              <Menu.Item name='Signin' as={NavLink} exact to="/signin" content='SIGN IN'/>
+              <Menu.Item name='about' as={NavLink} exact to="/signin" content='ABOUT US'/>
             </Menu.Item>
         ) : (
             <Menu.Item position='right'>

@@ -27,6 +27,9 @@
 
 #landing-grid
 {
-  margin-top: -70px;
+  margin-top: -170px;
   background-color: rgba(189, 191, 193,0.5);
+}
+#right-nav-bar {
+  padding: 0px;
 }
