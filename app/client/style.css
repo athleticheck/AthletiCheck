@@ -20,3 +20,7 @@
   margin: 0;
   padding: 0;
 }
+.ui.container.profile-page-visits {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
