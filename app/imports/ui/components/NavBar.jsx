@@ -23,17 +23,20 @@ class NavBar extends React.Component {
             <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
         ) : ''}
         {/** ------RIGHT SIDE OF NAVBAR----- */}
-        <Menu.Item position="right">
-          {this.props.currentUser === '' ? (
-              <Menu.Item name='Join' as={NavLink} exact to="/signup" content='JOIN' />
-              ) : (
-            <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}>
+        {this.props.currentUser === '' ? (
+            <Menu.Item position="right"> {/* zero padding!!! */}
+              <Menu.Item name='Join' as={NavLink} exact to="/signup" content='JOIN'/>
+              <Menu.Item name='Signin' as={NavLink} exact to="/signin" content='SIGNIN'/>
+            </Menu.Item>
+        ) : (
+            <Menu.Item position='right'>
+              <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}>
               <Dropdown.Menu>
                 <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>
               </Dropdown.Menu>
             </Dropdown>
-          )}
-        </Menu.Item>
+            </Menu.Item>
+        )}
       </Menu>
     );
   }
