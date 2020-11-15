@@ -12,7 +12,7 @@ const cornerLogo = '../images/useme.png';
 class NavBar extends React.Component {
   render() {
     return (
-      <Menu size='massive' attached="top" borderless>
+      <Menu size='massive' attached="top" borderless stackable>
         <Menu.Item as={NavLink} activeClassName="" exact to="/"><Image src={cornerLogo} size='small' />
         </Menu.Item>
         {this.props.currentUser ? (
@@ -25,9 +25,11 @@ class NavBar extends React.Component {
         {/** ------RIGHT SIDE OF NAVBAR----- */}
         {this.props.currentUser === '' ? (
             <Menu.Item position="right" id="right-nav-bar"> {/* zero padding!!! */}
-              <Menu.Item name='Join' as={NavLink} exact to="/signup" content='JOIN'/>
-              <Menu.Item name='Signin' as={NavLink} exact to="/signin" content='SIGN IN'/>
-              <Menu.Item name='about' as={NavLink} exact to="/about" content='ABOUT US'/>
+              <Menu secondary stackable>
+                <Menu.Item name='Join' as={NavLink} exact to="/signup" content='JOIN'/>
+                <Menu.Item name='Signin' as={NavLink} exact to="/signin" content='SIGN IN'/>
+                <Menu.Item name='about' as={NavLink} exact to="/about" content='ABOUT US'/>
+              </Menu>
             </Menu.Item>
         ) : (
             <Menu.Item position='right'>
