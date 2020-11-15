@@ -9,7 +9,7 @@ class Profile extends React.Component {
           <Grid columns={2} stackable divided>
             <Grid.Column>
               <Image centered size='medium' rounded
-                     src="https://www.ics.hawaii.edu/wp-content/uploads/2018/08/peter-sadowski_300x300.jpg"/>
+                     src="https://res-5.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_256,w_256,f_auto,g_faces,z_0.7,q_auto:eco/v1432963427/ix9o22ihyxifmqdpr3ue.png"/>
             </Grid.Column>
             <Grid.Column>
               <Header as='h1' textAlign='center' attached='top' inverted>
