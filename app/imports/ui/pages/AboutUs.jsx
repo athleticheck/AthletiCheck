@@ -27,7 +27,7 @@ export default class AboutUs extends React.Component {
             <p>Anna Campainha</p>
             <p>Robert Lemon</p>
             <p>Andy Yu</p>
-            <p>Franz Adams</p>
+            <p>Franz Adam</p>
           </Grid.Column>
             <Grid.Column>
               <Image src='https://www.cui.edu/Portals/0/uploadedimages/AcademicPrograms/Undergraduate/Majors/Athletic-Training/Athletic_Training_Thumbnail_2.jpg' />
