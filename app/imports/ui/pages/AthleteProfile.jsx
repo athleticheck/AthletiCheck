@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container, Header, Table } from 'semantic-ui-react';
+import { Container, Card, Header, Divider } from 'semantic-ui-react';
+import Visit from '../components/Visit';
+import Profile from '../components/Profile';
 
 /** Renders the Page for adding a document. */
 class AthleteProfile extends React.Component {
@@ -7,32 +9,26 @@ class AthleteProfile extends React.Component {
   /** Render the Profile page */
   render() {
     return (
-        <Container className="profile-page-container">
-          <Header as="h1" textAlign="center" inverted>
-            Firstname Lastname
-          </Header>
-          <Table singleLine unstackable>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell width={3}>Sport</Table.HeaderCell>
-                <Table.HeaderCell width={2}>Age</Table.HeaderCell>
-                <Table.HeaderCell width={2}>Height</Table.HeaderCell>
-                <Table.HeaderCell width={2}>Weight</Table.HeaderCell>
-                <Table.HeaderCell width={2}>Graduation</Table.HeaderCell>
-                <Table.HeaderCell width={4}>Major</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>Football</Table.Cell>
-                <Table.Cell>21</Table.Cell>
-                <Table.Cell>6&apos;1</Table.Cell>
-                <Table.Cell>200 lbs</Table.Cell>
-                <Table.Cell>2021</Table.Cell>
-                <Table.Cell>Communication</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
+        <Container className='profile-page-container'>
+          <Card fluid centered>
+            <Profile/>
+          </Card>
+          <Divider horizontal>
+            <Header as='h1' textAlign='center' inverted>VISITS</Header>
+          </Divider>
+          <Container className='profile-page-visits'>
+            <Card.Group>
+              <Visit date={new Date().toDateString()} trainer="trainer3@gmail.com"
+                     note="Back injured from carrying the entire team.  He shouldn't play again until his team practices more, in an effort to avoid future back injuries"
+                     cleared={false}/>
+              <Visit date={new Date().toDateString()} trainer="trainer2@gmail.com"
+                     note="This man is in the best shape I have ever seen.  He should play as often as possible!"
+                     cleared={true}/>
+              <Visit date={new Date().toDateString()} trainer="trainer1@gmail.com"
+                     note="Ankle injured from running 180 miles per hour.  I recommend icing ankle, but it shoud be fine"
+                     cleared={true}/>
+            </Card.Group>
+          </Container>
         </Container>
     );
   }

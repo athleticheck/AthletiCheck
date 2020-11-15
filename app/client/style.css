@@ -15,14 +15,16 @@
   border: none;
   margin: 0px;
 }
-
 .ui.container.profile-page-container {
   padding-top: 30px;
 }
-
 .background-landing {
   margin: 0;
   padding: 0;
+}
+.ui.container.profile-page-visits {
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
 #landing-grid
