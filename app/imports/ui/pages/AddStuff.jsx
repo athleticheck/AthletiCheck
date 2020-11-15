@@ -48,7 +48,7 @@ class AddStuff extends React.Component {
         <Grid container centered>
           <Grid.Column>
             <Divider hidden />
-            <Header as="h2" textAlign="center" inverted>Add New Visit</Header>
+            <Header as="h1" textAlign="center" inverted>Add New Visit</Header>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
                 <TextField name='name'/>
