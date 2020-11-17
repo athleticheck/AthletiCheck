@@ -1,0 +1,25 @@
+- EDIT PROFILE
+- button on admin profile to add new visit (link to add-visit)
+
+- change color of label cells (to active?)
+- change table to striped
+- Add title to profile list page
+- check console error
+
+- only clearance and comment for add-visit
+- not in navbar, need to click button on admin-profile page
+
+- more content in the center of page (cards)
+- mobile-friendly (stackable)
+
+- sign out page
+
+- about us page clean up
+- image broken
+
+- join page to have first and last name fields
+
+- replace image above signin AND signup (whatever anna makes)
+- green background / transparent green for form for signing AND signup
+
+- signing console error for signin AND signup
