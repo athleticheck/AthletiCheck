@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -46,13 +46,13 @@ class AddStuff extends React.Component {
           <Grid.Column>
             <Header as="h2" textAlign="center">Add Stuff</Header>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
-              <Segment>
-                <TextField name='name'/>
-                <NumField name='quantity' decimal={false}/>
-                <SelectField name='condition'/>
-                <SubmitField value='Submit'/>
-                <ErrorsField/>
-              </Segment>
+              <TextField name='name'/>
+              <NumField name='quantity' decimal={false}/>
+              <SelectField name='condition'/>
+              <SelectField name='clearance'/>
+              <LongTextField name='comment' />
+              <SubmitField value='Submit'/>
+              <ErrorsField/>
             </AutoForm>
           </Grid.Column>
         </Grid>
