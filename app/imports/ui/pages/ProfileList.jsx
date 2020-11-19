@@ -9,7 +9,7 @@ class ProfileList extends React.Component {
     return (
         <Container>
           <Divider hidden />
-          <Table size='large' celled padded color='white'>
+          <Table size='large' celled padded>
             <Table.Header fullWidth>
               <Table.Row>
                 <Table.HeaderCell textAlign='center'>Athlete</Table.HeaderCell>
