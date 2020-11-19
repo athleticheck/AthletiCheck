@@ -10,13 +10,15 @@ class AthleteProfile extends React.Component {
   render() {
     return (
         <Container className='profile-page-container'>
-          <Card fluid centered>
+          <Card fluid centered className="profile-page-profile">
             <Profile/>
           </Card>
-          <Divider horizontal>
-            <Header as='h1' textAlign='center' inverted>VISITS</Header>
-          </Divider>
-          <Container className='profile-page-visits'>
+          <Container className='profile-page-spacing'>
+            <Divider horizontal>
+              <Header as='h1' textAlign='center' inverted>VISITS</Header>
+            </Divider>
+          </Container>
+          <Container className='profile-page-spacing'>
             <Card.Group>
               <Visit date={new Date().toDateString()} trainer="trainer3@gmail.com"
                      note="Back injured from carrying the entire team.  He shouldn't play again until his team practices more, in an effort to avoid future back injuries"
