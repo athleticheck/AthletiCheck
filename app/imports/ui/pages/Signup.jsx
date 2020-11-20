@@ -44,7 +44,7 @@ class Signup extends React.Component {
           <Table>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
-              <Image src='/images/smallLogo.png' size='small' centered/>
+              <Image src='/images/circular-logo.png' size='small' centered/>
               <Header as='h2' color='black' textAlign='center'>
                 Register New Account
               </Header>
