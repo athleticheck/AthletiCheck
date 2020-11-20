@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Divider, Header, Image, Table, TableRow } from 'semantic-ui-react';
+import { Container, Divider, Header, Image, Table } from 'semantic-ui-react';
 
 /** Renders the Page for adding a document. */
 class ProfileList extends React.Component {
