@@ -23,6 +23,9 @@
 .ui.container.profile-page-container {
   padding-top: 35px;
 }
+.ui.container.element-under-nav-container {
+  padding-top: 35px;
+}
 .background-landing {
   margin: 0;
   padding: 0;
