@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Container, Grid, Image, Button } from 'semantic-ui-react';
+import { Card, Container, Grid, Image, Button, Segment } from 'semantic-ui-react';
 
 const menuStyle = { height: '500px' };
 const transLogo = '../images/circular-logo.png';
@@ -8,7 +8,7 @@ const transLogo = '../images/circular-logo.png';
 class Landing extends React.Component {
   render() {
     return (
-        <segment>
+        <Segment className='landing-segment'>
         <div className='background-landing'>
           <Grid container stackable verticalAlign="top" textAlign="center" style={menuStyle}>
             <Grid.Row>
@@ -34,10 +34,10 @@ class Landing extends React.Component {
                 <Card.Content>
                   <Card.Description>
                     <div className='ui two buttons'>
-                    <Button size='massive' color='black'>
+                    <Button size='massive' color='black' href="http://localhost:3000/#/about">
                       ABOUT US
                     </Button>
-                    <Button size='massive' color='black'>
+                    <Button size='massive' color='black' href="http://localhost:3000/#/signup">
                       JOIN US
                     </Button>
                     </div>
@@ -45,7 +45,7 @@ class Landing extends React.Component {
                 </Card.Content>
               </Card>
               <Card>
-                <Image src='/images/visit-two.png' alt='anna' wrapped ui={false}/>
+                <Image src='/images/visits-two.png' alt='anna' wrapped ui={false}/>
                 <Card.Content>
                   <Card.Header>History of Visits</Card.Header>
                   <Card.Description>
@@ -56,7 +56,7 @@ class Landing extends React.Component {
               </Card>
             </Card.Group>
           </Container>
-        </segment>
+        </Segment>
     );
   }
 }
