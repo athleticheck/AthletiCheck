@@ -8,8 +8,15 @@ class ProfileList extends React.Component {
   render() {
     return (
         <Container>
-          <Divider hidden />
-          <Table size='large' celled padded color='white'>
+          <Divider hidden/>
+          <Table size='large' celled padded striped stackable singleLine>
+            <Table.Header fullWidth>
+              <Table.Row>
+                <Table.HeaderCell colSpan='7' textAlign='center'>
+                  <Header>Profile List</Header>
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
             <Table.Header fullWidth>
               <Table.Row>
                 <Table.HeaderCell textAlign='center'>Athlete</Table.HeaderCell>
@@ -21,7 +28,6 @@ class ProfileList extends React.Component {
                 <Table.HeaderCell>Major</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-
             <Table.Body>
               <Table.Row>
                 <Table.Cell textAlign='center'>
@@ -66,7 +72,8 @@ class ProfileList extends React.Component {
                 <Table.Cell>Volleyball</Table.Cell>
                 <Table.Cell>22</Table.Cell>
                 <Table.Cell>3</Table.Cell>
-                <Table.Cell>Biochemistry</Table.Cell>            </Table.Row>
+                <Table.Cell>Biochemistry</Table.Cell>
+              </Table.Row>
               <Table.Row>
                 <Table.Cell textAlign='center'>
                   <Header as='h4' image>
@@ -80,10 +87,11 @@ class ProfileList extends React.Component {
                 <Table.Cell>Basketball</Table.Cell>
                 <Table.Cell>22</Table.Cell>
                 <Table.Cell>3</Table.Cell>
-                <Table.Cell>Computer Science</Table.Cell>            </Table.Row>
+                <Table.Cell>Computer Science</Table.Cell>
+              </Table.Row>
             </Table.Body>
           </Table>
-          <Divider hidden />
+          <Divider hidden/>
         </Container>
     );
   }
