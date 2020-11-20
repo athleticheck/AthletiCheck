@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import { Container, Form, Grid, Header, Message, Segment, Image, Divider, Table } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Message, Segment, Image, Table } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 
 /**
@@ -39,8 +39,7 @@ class Signup extends React.Component {
       return <Redirect to={from}/>;
     }
     return (
-        <Container id="signup-page">
-          <Divider hidden />
+        <Container id="signup-page" className='element-under-nav-container'>
           <Table>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
@@ -50,7 +49,6 @@ class Signup extends React.Component {
               </Header>
               <Form onSubmit={this.submit}>
                 <Segment stacked>
-
                   <Form.Input
                       label="First Name"
                       id="signup-form-email"
@@ -109,7 +107,6 @@ class Signup extends React.Component {
               )}
             </Grid.Column>
           </Grid>
-          <Divider hidden />
           </Table>
         </Container>
     );
