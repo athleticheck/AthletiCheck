@@ -16,7 +16,7 @@ class NavBar extends React.Component {
         <Menu.Item as={NavLink} activeClassName="" exact to="/"><Image src={cornerLogo} size='small' />
         </Menu.Item>
         {this.props.currentUser ? (
-            [<Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
+            [<Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Add New Visit</Menu.Item>,
               <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Menu.Item>]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
