@@ -1,19 +1,20 @@
-.background-landing { /* delete this */
-  /* background: url('images/officialBackground.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover; */
+.background-landing{
+  background: url('images/landing-background.png') no-repeat center center;
+  background-size: cover;
+  height: 500px;
+  margin:  0;
 }
 /* NavBar */
 .ui.attached.menu {
   background: white;
   border: none !important;
   border-radius: 0 !important;
+  margin-bottom: 0;
 }
 .ui.borderless.middlemenu.menu {
   box-shadow: none;
   border: none;
-  margin: 0px;
+  margin: 0;
 }
 .ui.container.profile-page-container {
   padding-top: 35px;
@@ -27,7 +28,7 @@
   padding-bottom: 14px;
 }
 .ui.card.profile-page-profile {
-  margin: 0px;
+  margin: 0;
 }
 .ui.header.edit-profile-header {
   padding-top: 14px;
@@ -38,8 +39,12 @@
   margin-top: -170px;
   background-color: rgba(189, 191, 193,0.5);
 }
+.ui.container.profile-page-visits {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
 #right-nav-bar {
-  padding: 0px;
+  padding: 0;
 }
 #about-left {
  /* background-color: white; */
