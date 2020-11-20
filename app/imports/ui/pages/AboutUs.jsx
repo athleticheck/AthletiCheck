@@ -30,7 +30,7 @@ export default class AboutUs extends React.Component {
             <p>Franz Adam</p>
           </Grid.Column>
             <Grid.Column>
-              <Image src='https://www.cui.edu/Portals/0/uploadedimages/AcademicPrograms/Undergraduate/Majors/Athletic-Training/Athletic_Training_Thumbnail_2.jpg' />
+              <Image src='https://www.sckans.edu/file/4626' />
             </Grid.Column>
           </Grid>
         </Container>
