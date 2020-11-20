@@ -40,18 +40,16 @@ class Signup extends React.Component {
     }
     return (
         <Container id="signup-page" className='element-under-nav-container'>
-          <Table>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
               <Image src='/images/circular-logo.png' size='small' centered/>
-              <Header as='h2' color='black' textAlign='center'>
+              <Header as='h2' color='black' textAlign='center' inverted>
                 Register New Account
               </Header>
               <Form onSubmit={this.submit}>
                 <Segment stacked>
                   <Form.Input
                       label="First Name"
-                      id="signup-form-email"
                       icon="user"
                       iconPosition="left"
                       name="email"
@@ -61,7 +59,6 @@ class Signup extends React.Component {
                   />
                   <Form.Input
                       label="Last Name"
-                      id="signup-form-email"
                       icon="user"
                       iconPosition="left"
                       name="email"
@@ -72,7 +69,6 @@ class Signup extends React.Component {
 
                   <Form.Input
                       label="Email"
-                      id="signup-form-email"
                       icon="user"
                       iconPosition="left"
                       name="email"
@@ -82,7 +78,6 @@ class Signup extends React.Component {
                   />
                   <Form.Input
                       label="Password"
-                      id="signup-form-password"
                       icon="lock"
                       iconPosition="left"
                       name="password"
@@ -90,7 +85,7 @@ class Signup extends React.Component {
                       type="password"
                       onChange={this.handleChange}
                   />
-                  <Form.Button id="signup-form-submit" content="Submit"/>
+                  <Form.Button className="signup-form-submit" content="Submit"/>
                 </Segment>
               </Form>
               <Message>
@@ -107,7 +102,6 @@ class Signup extends React.Component {
               )}
             </Grid.Column>
           </Grid>
-          </Table>
         </Container>
     );
   }

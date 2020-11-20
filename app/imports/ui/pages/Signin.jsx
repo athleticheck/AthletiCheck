@@ -42,55 +42,53 @@ export default class Signin extends React.Component {
     }
     // Otherwise return the Login form.
     return (
-      <Container id="signin-page" className='element-under-nav-container'>
-        <Table>
-        <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
-          <Grid.Column>
-            <Image src='/images/circular-logo.png' size='small' centered/>
-            <Header as="h1" textAlign="center">
-              Login
-            </Header>
-            <Form onSubmit={this.submit}>
-              <Segment stacked>
-                <Form.Input
-                  label="Email"
-                  id="signin-form-email"
-                  icon="user"
-                  iconPosition="left"
-                  name="email"
-                  type="email"
-                  placeholder="E-mail address"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="Password"
-                  id="signin-form-password"
-                  icon="lock"
-                  iconPosition="left"
-                  name="password"
-                  placeholder="Password"
-                  type="password"
-                  onChange={this.handleChange}
-                />
-                <Form.Button id="signin-form-submit" content="Submit"/>
-              </Segment>
-            </Form>
-            <Message>
-              <Link to="/signup">Click here to Register</Link>
-            </Message>
-            {this.state.error === '' ? (
-              ''
-            ) : (
-              <Message
-                error
-                header="Login was not successful"
-                content={this.state.error}
-              />
-            )}
-          </Grid.Column>
-        </Grid>
-        </Table>
-      </Container>
+        <Container id="signin-page" className='element-under-nav-container'>
+          <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
+            <Grid.Column>
+              <Image src='/images/circular-logo.png' size='small' centered/>
+              <Header as="h1" textAlign="center" inverted>
+                Login
+              </Header>
+              <Form onSubmit={this.submit}>
+                <Segment stacked>
+                  <Form.Input
+                      label="Email"
+                      id="signin-form-email"
+                      icon="user"
+                      iconPosition="left"
+                      name="email"
+                      type="email"
+                      placeholder="E-mail address"
+                      onChange={this.handleChange}
+                  />
+                  <Form.Input
+                      label="Password"
+                      id="signin-form-password"
+                      icon="lock"
+                      iconPosition="left"
+                      name="password"
+                      placeholder="Password"
+                      type="password"
+                      onChange={this.handleChange}
+                  />
+                  <Form.Button id="signin-form-submit" content="Submit"/>
+                </Segment>
+              </Form>
+              <Message>
+                <Link to="/signup">Click here to Register</Link>
+              </Message>
+              {this.state.error === '' ? (
+                  ''
+              ) : (
+                  <Message
+                      error
+                      header="Login was not successful"
+                      content={this.state.error}
+                  />
+              )}
+            </Grid.Column>
+          </Grid>
+        </Container>
     );
   }
 }
