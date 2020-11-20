@@ -1,39 +1,30 @@
-.background-landing { /* delete this */
-  /* background: url('images/officialBackground.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover; */
+.background-landing{
+  background: url('images/landing-background.png') no-repeat center center;
+  background-size: cover;
+  height: 500px;
+  margin:  0px;
 }
 /* NavBar */
 .ui.attached.menu {
   background: white;
   border: none !important;
   border-radius: 0 !important;
+  margin-bottom: 0px;
 }
 .ui.borderless.middlemenu.menu {
   box-shadow: none;
   border: none;
-  margin: 0px;
+  margin: 0;
 }
 .ui.container.profile-page-container {
   padding-top: 30px;
-}
-.background-landing {
-  margin: 0;
-  padding: 0;
 }
 .ui.container.profile-page-visits {
   padding-top: 14px;
   padding-bottom: 14px;
 }
-
-#landing-grid
-{
-  margin-top: -170px;
-  background-color: rgba(189, 191, 193,0.5);
-}
 #right-nav-bar {
-  padding: 0px;
+  padding: 0;
 }
 #about-left {
  /* background-color: white; */
