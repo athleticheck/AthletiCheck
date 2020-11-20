@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Container, Grid, Image, Button, Segment } from 'semantic-ui-react';
+import { Card, Container, Grid, Image, Button } from 'semantic-ui-react';
 
 const menuStyle = { height: '500px' };
 const transLogo = '../images/circular-logo.png';
@@ -8,17 +8,17 @@ const transLogo = '../images/circular-logo.png';
 class Landing extends React.Component {
   render() {
     return (
-        <Segment className='landing-segment'>
-        <div className='background-landing'>
-          <Grid container stackable verticalAlign="top" textAlign="center" style={menuStyle}>
-            <Grid.Row>
-              <Grid.Column>
-                <Image centered src={transLogo} size='large' />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </div>
-          <Container>
+        <div>
+          <div className='background-landing'>
+            <Grid container stackable verticalAlign="top" textAlign="center" style={menuStyle}>
+              <Grid.Row>
+                <Grid.Column>
+                  <Image centered src={transLogo} size='large'/>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </div>
+          <Container className="profile-page-container">
             <Card.Group centered>
               <Card>
                 <Image src='/images/sadowski.png' alt='profile card' wrapped ui={false}/>
@@ -34,12 +34,12 @@ class Landing extends React.Component {
                 <Card.Content>
                   <Card.Description>
                     <div className='ui two buttons'>
-                    <Button size='massive' color='black' href="http://localhost:3000/#/about">
-                      ABOUT US
-                    </Button>
-                    <Button size='massive' color='black' href="http://localhost:3000/#/signup">
-                      JOIN US
-                    </Button>
+                      <Button size='massive' color='black' href="http://localhost:3000/#/about">
+                        ABOUT US
+                      </Button>
+                      <Button size='massive' color='black' href="http://localhost:3000/#/signup">
+                        JOIN US
+                      </Button>
                     </div>
                   </Card.Description>
                 </Card.Content>
@@ -56,7 +56,7 @@ class Landing extends React.Component {
               </Card>
             </Card.Group>
           </Container>
-        </Segment>
+        </div>
     );
   }
 }
