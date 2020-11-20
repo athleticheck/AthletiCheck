@@ -23,7 +23,7 @@ export default class AboutUs extends React.Component {
               spend anywhere from 2-4 hours a day on documentation. This holds true for the ATs at UH as well. My proposed solution to this problem is an easily accessible
               web application for the UH athletics community where data can be entried and received
               easily on both ends to save time on documentation and make up more time to actually treat UH’s athletes.</p>
-            <h3>Our Team:</h3>
+            <h3>Our Team</h3>
             <p>Anna Campainha</p>
             <p>Robert Lemon</p>
             <p>Andy Yu</p>
