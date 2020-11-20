@@ -50,6 +50,28 @@ class Signup extends React.Component {
               </Header>
               <Form onSubmit={this.submit}>
                 <Segment stacked>
+
+                  <Form.Input
+                      label="First Name"
+                      id="signup-form-email"
+                      icon="user"
+                      iconPosition="left"
+                      name="email"
+                      type="email"
+                      placeholder="First Name"
+                      onChange={this.handleChange}
+                  />
+                  <Form.Input
+                      label="Last Name"
+                      id="signup-form-email"
+                      icon="user"
+                      iconPosition="left"
+                      name="email"
+                      type="email"
+                      placeholder="Last Name"
+                      onChange={this.handleChange}
+                  />
+
                   <Form.Input
                       label="Email"
                       id="signup-form-email"
