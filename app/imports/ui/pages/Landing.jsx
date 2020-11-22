@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Container, Grid, Image, Button } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 const menuStyle = { height: '500px' };
 const transLogo = '../images/circular-logo.png';
@@ -34,11 +35,11 @@ class Landing extends React.Component {
                 <Card.Content>
                   <Card.Description>
                     <div className='ui two buttons'>
-                      <Button size='massive' color='black' href="http://localhost:3000/#/about">
-                        ABOUT US
-                      </Button>
-                      <Button size='massive' color='black' href="http://localhost:3000/#/signup">
-                        JOIN US
+                      <Button size='massive' color='black'
+                              as={NavLink} activeClassName="active"exact to="/about">
+                        <Button.Content>
+                          ABOUT US
+                        </Button.Content>
                       </Button>
                     </div>
                   </Card.Description>
