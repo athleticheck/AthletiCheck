@@ -3,7 +3,7 @@ import { Button, Card, Container, Image } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
-class Footer extends React.Component {
+class CardsOriginal extends React.Component {
   render() {
     return (
         <Container className="profile-page-container">
@@ -48,4 +48,4 @@ class Footer extends React.Component {
   }
 }
 
-export default Footer;
+export default CardsOriginal;
