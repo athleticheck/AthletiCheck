@@ -30,7 +30,6 @@ class NavBar extends React.Component {
               <Menu secondary stackable>
                 <Menu.Item name='Join' as={NavLink} exact to="/signup" content='JOIN'/>
                 <Menu.Item name='Signin' as={NavLink} exact to="/signin" content='SIGN IN'/>
-                <Menu.Item name='about' as={NavLink} exact to="/about" content='ABOUT US'/>
               </Menu>
             </Menu.Item>
         ) : (

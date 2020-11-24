@@ -1,8 +1,10 @@
 import React from 'react';
-import { Card, Container, Grid, Image, Button } from 'semantic-ui-react';
+import { Button, Label, Container, Grid, Header, Image } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 const menuStyle = { height: '500px' };
+const buttonStyle = { width: '290px' };
 const transLogo = '../images/circular-logo.png';
 // const create = '../images/create.png';
 /** A simple static component to render some text for the landing page. */
@@ -19,43 +21,32 @@ class Landing extends React.Component {
               </Grid.Row>
             </Grid>
           </div>
-          <Container className="profile-page-container">
-            <Card.Group centered>
-              <Card>
-                <Image src='/images/sadowski.png' alt='profile card' wrapped ui={false}/>
-                <Card.Content>
-                  <Card.Header>Custom Athlete Profiles</Card.Header>
-                  <Card.Description>
-                    Easy access to athlete profiles for both the athlete and the trainer
-                  </Card.Description>
-                </Card.Content>
-              </Card>
-              <Card>
-                <Image src='/images/signup.png' alt='signup' wrapped ui={false}/>
-                <Card.Content>
-                  <Card.Description>
-                    <div className='ui two buttons'>
-                      <Button size='massive' color='black'
-                              as={NavLink} activeClassName="active"exact to="/about">
-                        <Button.Content>
-                          ABOUT US
-                        </Button.Content>
-                      </Button>
-                    </div>
-                  </Card.Description>
-                </Card.Content>
-              </Card>
-              <Card>
-                <Image src='/images/visits-two.png' alt='anna' wrapped ui={false}/>
-                <Card.Content>
-                  <Card.Header>History of Visits</Card.Header>
-                  <Card.Description>
-                    <p>A single location for all of an athlete’s annotated visits with trainers.</p>
-                    <p>Commenting on specific trainer visits</p>
-                  </Card.Description>
-                </Card.Content>
-              </Card>
-            </Card.Group>
+          <Container className='boxes'>
+          <Grid stackable columns='three'>
+            <Grid.Row>
+              <Grid.Column>
+                <Image src='/images/grey-bubbles.png' />
+                <Label size='massive' style={buttonStyle} color='black'>
+                  <Header as='h1' textAlign='center' inverted>CUSTOM PROFILES</Header>
+                </Label>
+              </Grid.Column>
+              <Grid.Column>
+                <Image src='/images/signup.png' />
+                <Button style={buttonStyle} size='massive' color='black'
+                        as={NavLink} activeClassName="active"exact to="/about">
+                  <Button.Content>
+                    ABOUT US
+                  </Button.Content>
+                </Button>
+              </Grid.Column>
+              <Grid.Column>
+                <Image src='/images/grey-cleared.png' />
+                <Label size='massive' style={buttonStyle} color='black'>
+                  <Header as='h1' textAlign='center' inverted>HISTORY OF VISITS</Header>
+                </Label>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
           </Container>
         </div>
     );
