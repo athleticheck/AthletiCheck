@@ -26,7 +26,7 @@ class Landing extends React.Component {
               <Grid.Column>
                 <Image src='/images/twousers.png' />
                 <Label size='massive' style={buttonStyle} color='black'>
-                  <Header as='h1' textAlign='center' inverted className="box-headers">ITERACTIVE PROFILES</Header>
+                  <Header as='h1' textAlign='center' inverted className="box-headers">INTERACTIVE PROFILES</Header>
                 </Label>
               </Grid.Column>
               <Grid.Column>
