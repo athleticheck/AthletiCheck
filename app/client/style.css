@@ -20,6 +20,11 @@
   margin-left: 0px;
   font-size: 1.71428571rem;
 }
+.landing-text {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
 .ui.borderless.middlemenu.menu {
   box-shadow: none;
   border: none;

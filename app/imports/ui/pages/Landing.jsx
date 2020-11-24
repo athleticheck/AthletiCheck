@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Label, Container, Grid, Header, Image } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-// import { NavLink } from 'react-router-dom';
 
 const menuStyle = { height: '500px' };
 const buttonStyle = { width: '290px' };
@@ -13,10 +12,10 @@ class Landing extends React.Component {
     return (
         <div>
           <div className='background-landing'>
-            <Grid container stackable verticalAlign="top" textAlign="center" style={menuStyle}>
+            <Grid container stackable columns={3} verticalAlign="top" textAlign="center" style={menuStyle}>
               <Grid.Row>
                 <Grid.Column>
-                  <Image centered src={transLogo} size='large'/>
+                  <Image centered src={transLogo} size='large' />
                 </Grid.Column>
               </Grid.Row>
             </Grid>
@@ -25,9 +24,9 @@ class Landing extends React.Component {
           <Grid stackable columns='three'>
             <Grid.Row>
               <Grid.Column>
-                <Image src='/images/grey-bubbles.png' />
+                <Image src='/images/twousers.png' />
                 <Label size='massive' style={buttonStyle} color='black'>
-                  <Header as='h1' textAlign='center' inverted>CUSTOM PROFILES</Header>
+                  <Header as='h1' textAlign='center' inverted className="box-headers">ITERACTIVE PROFILES</Header>
                 </Label>
               </Grid.Column>
               <Grid.Column>
@@ -40,9 +39,9 @@ class Landing extends React.Component {
                 </Button>
               </Grid.Column>
               <Grid.Column>
-                <Image src='/images/grey-cleared.png' />
+                <Image src='/images/user-profile.png' />
                 <Label size='massive' style={buttonStyle} color='black'>
-                  <Header as='h1' textAlign='center' inverted>HISTORY OF VISITS</Header>
+                  <Header as='h1' textAlign='center' inverted className="box-headers">HISTORY OF VISITS</Header>
                 </Label>
               </Grid.Column>
             </Grid.Row>
