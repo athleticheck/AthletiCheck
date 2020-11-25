@@ -1,3 +1,4 @@
+/* Background Image */
 .background-landing{
   background-image: url('images/landing-background.png');
   background-size: cover;
@@ -13,19 +14,22 @@
   margin-bottom: 0px;
   padding: 0px;
 }
+/* Landing: Padding Above Boxes */
 .boxes {
   padding-top: 20px;
-  background-color: white;
 }
+/* Landing: Labels Below Boxes */
 .ui.black.massive.label {
   margin-left: 0px;
   font-size: 1.71428571rem;
 }
+/* Landing: For the Boxes */
 .landing-text {
   color: white;
   font-weight: bold;
   font-size: 2rem;
 }
+/* NavBar: Menu */
 .ui.borderless.middlemenu.menu {
   box-shadow: none;
   border: none;
@@ -36,6 +40,10 @@
 }
 .ui.container.element-under-nav-container {
   padding-top: 35px;
+}
+.ui.grid > .row > .column.landing-image {
+  padding: 0px;
+  border-radius: 0 !important;
 }
 .background-landing {
   margin: 0;
@@ -64,9 +72,11 @@
 .div.entire-landing-page {
   padding-top: 35px;
 }
-
 #right-nav-bar {
   padding: 0;
+}
+.logo-description {
+  background-color: white;
 }
 #about-left {
  /* background-color: white; */
