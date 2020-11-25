@@ -21,7 +21,7 @@ class Landing extends React.Component {
             </Grid>
           </div>
           <Container className='boxes'>
-          <Grid stackable columns='three'>
+          <Grid stackable columns={3}>
             <Grid.Row>
               <Grid.Column>
                 <Image src='/images/twousers.png' />
