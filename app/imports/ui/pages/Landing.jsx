@@ -19,8 +19,7 @@ class Landing extends React.Component {
                   <Image centered src={transLogo} size='large' />
                 </Grid.Column>
                 <Grid.Column>
-                  <Header className="logo-description"> The easiest way for Athletic Trainers to manage athletes
-                    at every collegiate level. </Header>
+                  <Header className="logo-description" inverted> Welcome to the easiest way for Athletic Trainers and Athletes to communicate and thrive at all collegiate levels. </Header>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

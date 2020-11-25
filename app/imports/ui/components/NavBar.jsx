@@ -11,7 +11,7 @@ const cornerLogo = '../images/useme.png';
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
-    const menuStyle = { marginBottom: '13px' };
+    const menuStyle = { marginBottom: '13px', marginRight: '0px' };
     return (
       <Menu size='massive' style={menuStyle} attached="top" borderless stackable>
         <Menu.Item as={NavLink} activeClassName="" exact to="/"><Image src={cornerLogo} size='small' />
