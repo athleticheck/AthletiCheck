@@ -1,38 +1,48 @@
 import React from 'react';
-import { Header, Image, Grid, Container, List } from 'semantic-ui-react';
+import { Header, Image, Grid, Container, Segment } from 'semantic-ui-react';
 
 export default class AboutUs extends React.Component {
 
   render() {
+    const divStyle = {
+      paddingTop: '15px',
+      color: 'white',
+    };
     return (
         <Container>
-          <Grid columns={2} >
-          <Grid.Column id='about-left'>
-            <Header as='h1'>ABOUT US</Header>
-            <h3>AthletiCheck is an application that allows users to: </h3>
-            <List bulleted>
-            <List.Item> Effectively communicate between Athletic Trainers and Athletes</List.Item>
-              <List.Item>Update personal treatments, rehab and notes for Athletes</List.Item>
-              <List.Item>Easy access to all Athletes</List.Item>
-            </List>
-            <h3>Our Goal</h3>
-            <p>Ever since the transition to electronic medical record systems for athletic staff at university sports programs, a tremendous amount of time has been spent on
-              recording athletes’ data due to the fact that most EMR systems do not provide a user friendly interface and are not easily accessible, so athletic trainer
-              often record data and then copy it into the system at the end of the day. How do I aswsume that? Over the summer my colleague and me have concluded
-              around 80 interviews with different athletic trainers in U.S. colleges, ranging from D1 to Junior level programs, and the collected data shows that ATs
-              spend anywhere from 2-4 hours a day on documentation. This holds true for the ATs at UH as well. My proposed solution to this problem is an easily accessible
-              web application for the UH athletics community where data can be entried and received
-              easily on both ends to save time on documentation and make up more time to actually treat UH’s athletes.</p>
-            <h3>Our Team</h3>
-            <p>Anna Campainha</p>
-            <p>Robert Lemon</p>
-            <p>Andy Yu</p>
-            <p>Franz Adam</p>
-          </Grid.Column>
-            <Grid.Column>
-              <Image src='https://www.sckans.edu/file/4626' />
+            <Header as='h1' style={divStyle} textAlign="center" size="huge" className='about-welcome'> WELCOME </Header>
+            <Header as='h2' textAlign="center" size="medium">We are AthletiCheck, providing you with the most efficient way to manage Athletes.</Header>
+          <Grid>
+            <Grid.Column className="about-description">
+              <Segment inverted>Inverted content.
+              <Header>second half thats below</Header>
+              </Segment>
             </Grid.Column>
           </Grid>
+          <div className="aboutus-bios">
+          <Grid colums={2}>
+            <Grid.Row>
+            <Grid.Column>
+              <Image src='https://franzadam.github.io/images/MeTi.jpg' />
+              <Header>FRANZ ADAMS</Header>
+            </Grid.Column>
+            <Grid.Column>
+              <Image src='https://robert-lemon-uhm.github.io/images/SquarePic.png' />
+              <Header>ROBERT LEMON</Header>
+            </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <Image src='https://andyyu824.github.io/images/andyyu.jpg' />
+                <Header>ANDY YU</Header>
+              </Grid.Column>
+              <Grid.Column>
+                <Image src='https://annacampainha.github.io/images/annapic.png' />
+                <Header>ANNA CAMPAINHA</Header>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+          </div>
         </Container>
     );
   }

@@ -29,12 +29,16 @@ class ProfileList extends React.Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
+              {/* profiles.map(profile => <tableEntry profile='profile'/>) */}
               <Table.Row>
                 <Table.Cell textAlign='center'>
                   <Header as='h4' image>
                     <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini'/>
                     <Header.Content>
                     </Header.Content>
+                    {/* <Link to={`/admin-profile/${this.props.profile.userId}`}>Edit</Link> */}
+                    {/* OR profile._id */}
+                    {/* see "contact.jsx" for example */}
                   </Header>
                 </Table.Cell>
                 <Table.Cell>Smith</Table.Cell>
