@@ -6,6 +6,10 @@
     background-repeat: no-repeat;
   height: 500px;
 }
+.about-us-container {
+  background-color: #BDBFC1;
+  padding-top: 20px;
+}
 .ui.inverted.segment > .ui.header{
   border: none !important;
   border-radius: 0rem !important;
