@@ -6,6 +6,12 @@
     background-repeat: no-repeat;
   height: 500px;
 }
+.ui.inverted.segment > .ui.header{
+  border: none !important;
+  border-radius: 0rem !important;
+  margin-bottom: 0px;
+  padding: 0px;
+}
 /* NavBar */
 .ui.attached.menu {
   background: white;
