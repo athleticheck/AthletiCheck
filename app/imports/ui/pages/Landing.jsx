@@ -36,7 +36,7 @@ class Landing extends React.Component {
               <Grid.Column className="landing-image">
                 <Image src='/images/signup.png' fluid/>
                 <Label size='massive' style={buttonStyle} color='black'>
-                <Button style={buttonStyle} size='small' inverted color='red'
+                <Button style={buttonStyle} size='small' color='grey'
                         as={NavLink} activeClassName="active"exact to="/about">
                   <Button.Content>
                     ABOUT US
