@@ -15,7 +15,7 @@ class Profile extends React.Component {
 
   /** Render the component once subscriptions have been received. */
   renderProfile() {
-    const profile = this.props.profiles.findOne({ username: this.props.username });
+    const profile = this.props.profiles.findOne({ userId: this.props.userId });
     console.log(profile.firstName); // TEST
     return (
         <Card.Content textAlign='center'>
@@ -65,7 +65,7 @@ class Profile extends React.Component {
 
 /** Require data to be passed to this component. */
 Profile.propTypes = {
-  username: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired,
   profiles: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };

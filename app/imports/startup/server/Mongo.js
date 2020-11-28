@@ -26,17 +26,17 @@ if (Stuffs.collection.find().count() === 0) {
 
 /** Initialize the database with a default data document. */
 function addProfile(profile) {
-  console.log(`  Adding profile: ${profile.username}`);
+  console.log(`  Adding: ${profile.userID}`);
   Profiles.collection.insert(profile);
 }
 
 // function addVisit(visit) {
-//   console.log(`  Adding: ${visit.profileId}`);
+//   console.log(`  Adding: ${visit.profileID}`);
 //   Visits.collection.insert(visit);
 // }
 //
 // function addComment(comment) {
-//   console.log(`  Adding: ${comment.visitId}`);
+//   console.log(`  Adding: ${comment.visitID}`);
 //   Comments.collection.insert(comment);
 // }
 

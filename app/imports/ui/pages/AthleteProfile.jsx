@@ -12,7 +12,7 @@ class AthleteProfile extends React.Component {
     return (
         <Container className='profile-page-container'>
           <Card fluid centered className="profile-page-profile">
-            <Profile userId="yBhaNqePJDBDtme5w"/>
+            <Profile userId={Meteor.userId}/>
           </Card>
           <Container className='profile-page-spacing'>
             <Divider horizontal>

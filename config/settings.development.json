@@ -11,7 +11,7 @@
 
   "defaultProfiles": [
     {
-      "userId" : "TTbyjmYz8EdfySWWZ",
+      "email" : "john@foo.com",
       "firstName": "Peter",
       "lastName": "Sadowski",
       "sport": "Football",
