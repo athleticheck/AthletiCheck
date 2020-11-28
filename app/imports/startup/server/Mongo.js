@@ -26,26 +26,27 @@ if (Stuffs.collection.find().count() === 0) {
 
 /** Initialize the database with a default data document. */
 function addProfile(profile) {
-  console.log(`  Adding: ${profile.userID}`);
+  console.log(`  Adding profile: ${profile.username}`);
   Profiles.collection.insert(profile);
 }
 
 // function addVisit(visit) {
-//   console.log(`  Adding: ${visit.profileID}`);
+//   console.log(`  Adding: ${visit.profileId}`);
 //   Visits.collection.insert(visit);
 // }
 //
 // function addComment(comment) {
-//   console.log(`  Adding: ${comment.visitID}`);
+//   console.log(`  Adding: ${comment.visitId}`);
 //   Comments.collection.insert(comment);
 // }
 
 /** Initialize the Profiles collection if empty. */
 if (Profiles.collection.find().count() === 0) {
-  console.log('profiles collection is empty!');
   if (Meteor.settings.defaultProfiles) {
     console.log('Creating default profiles.');
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
+  } else {
+    console.log('profiles collection is empty!');
   }
 }
 

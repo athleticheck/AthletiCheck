@@ -1,9 +1,22 @@
 import React from 'react';
-import { Table, Card, Image, Header, Grid } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { Table, Card, Image, Header, Grid, Loader } from 'semantic-ui-react';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import { Profiles } from '../../api/profile/Profiles';
 
+/** Renders a profile containing all the athlete's data */
 class Profile extends React.Component {
 
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+    return (this.props.ready) ? this.renderProfile() : <Loader active>Getting Data</Loader>;
+  }
+
+  /** Render the component once subscriptions have been received. */
+  renderProfile() {
+    const profile = this.props.profiles.findOne({ username: this.props.username });
+    console.log(profile.firstName); // TEST
     return (
         <Card.Content textAlign='center'>
           <Grid columns={2} stackable divided>
@@ -50,4 +63,19 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+/** Require data to be passed to this component. */
+Profile.propTypes = {
+  username: PropTypes.string.isRequired,
+  profiles: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Get access to Contacts documents.
+  const ProfilesSubscription = Meteor.subscribe(Profiles.userPublicationName);
+  return {
+    profiles: Profiles.collection.find({}).fetch(),
+    ready: ProfilesSubscription.ready(),
+  };
+})(Profile);

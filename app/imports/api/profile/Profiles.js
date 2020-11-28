@@ -11,7 +11,7 @@ class ProfilesCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      userId: String,
+      username: String,
       firstName: String,
       lastName: String,
       sport: String,

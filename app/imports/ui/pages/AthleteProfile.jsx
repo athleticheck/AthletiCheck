@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Container, Card, Header, Divider } from 'semantic-ui-react';
 import Visit from '../components/Visit';
 import Profile from '../components/Profile';
@@ -11,7 +12,7 @@ class AthleteProfile extends React.Component {
     return (
         <Container className='profile-page-container'>
           <Card fluid centered className="profile-page-profile">
-            <Profile/>
+            <Profile userId="yBhaNqePJDBDtme5w"/>
           </Card>
           <Container className='profile-page-spacing'>
             <Divider horizontal>
