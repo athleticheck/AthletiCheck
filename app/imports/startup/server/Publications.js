@@ -36,10 +36,10 @@ Meteor.publish(Visits.userPublicationName, function () {
 Meteor.publish(Comments.userPublicationName, function () {
   if (this.userId) {
     const profileId = Profiles.findOne({ userId: this.userId });
-    const visitId = Visits.find({ profileId: profileId });
+    const visitIds = Visits.find({ profileId: profileId });
     const comments = [];
     // _.each(visitId, (visit) => { comments.concat(Comments.collection.find({ visitId: visit })); });
-    visitId.forEach((visit) => { comments.concat(Comments.collection.find({ visitId: visit })); });
+    visitIds.forEach((visit) => { comments.concat(Comments.collection.find({ visitId: visit })); });
     return comments;
   }
   return this.ready();
