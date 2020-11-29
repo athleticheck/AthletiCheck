@@ -6,9 +6,30 @@
     background-repeat: no-repeat;
   height: 500px;
 }
+/*
 .about-us-container {
   background-color: #BDBFC1;
   padding-top: 20px;
+}
+*/
+.about-us-background {
+  background-color: white;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+.our-team-background {
+  background-color: #BDBFC1;
+}
+
+.about-aboutus > p{
+  text-align: center;
+  margin-inline-start: 20px;
+  margin-inline-end: 20px;
+  font-size: 18px;
+}
+.name-bio-aboutus {
+  padding-top: 20px;
+  text-align: center;
 }
 .ui.inverted.segment > .ui.header{
   border: none !important;
