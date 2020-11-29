@@ -6,12 +6,11 @@
     background-repeat: no-repeat;
   height: 500px;
 }
-/*
 .about-us-container {
   background-color: #BDBFC1;
   padding-top: 20px;
 }
-*/
+/*
 .about-us-background {
   background-color: white;
   padding-bottom: 25px;
@@ -20,6 +19,7 @@
 .our-team-background {
   background-color: #BDBFC1;
 }
+ */
 
 .about-aboutus > p{
   text-align: center;
