@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Divider, Header, Image, Table } from 'semantic-ui-react';
+import { Meteor } from "meteor/meteor";
 
 /** Renders the Page for adding a document. */
 class ProfileList extends React.Component {
@@ -30,7 +31,7 @@ class ProfileList extends React.Component {
             </Table.Header>
             <Table.Body>
               {/* profiles.map(profile => <tableEntry profile='profile'/>) */}
-              <Table.Row>
+              {/* Meteor.settings.defaultData.map(data => addData(data)); */}
                 <Table.Cell textAlign='center'>
                   <Header as='h4' image>
                     <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini'/>
