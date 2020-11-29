@@ -22,7 +22,7 @@ class ProfileList extends React.Component {
           <Table size='large' celled padded striped stackable singleLine>
             <Table.Header fullWidth>
               <Table.Row>
-                <Table.HeaderCell colSpan='7' textAlign='center'>
+                <Table.HeaderCell colSpan='8' textAlign='center'>
                   <Header>Profile List</Header>
                 </Table.HeaderCell>
               </Table.Row>
@@ -36,6 +36,7 @@ class ProfileList extends React.Component {
                 <Table.HeaderCell>Age</Table.HeaderCell>
                 <Table.HeaderCell>Year</Table.HeaderCell>
                 <Table.HeaderCell>Major</Table.HeaderCell>
+                <Table.HeaderCell>User ID</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
