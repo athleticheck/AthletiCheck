@@ -22,7 +22,7 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
-// Our Collectsions ======================================================
+// Our Collections ======================================================
 
 /** Initialize the database with a default data document. */
 function addProfile(profile) {
