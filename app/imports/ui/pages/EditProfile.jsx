@@ -27,7 +27,7 @@ class EditProfile extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     return (
-        <Grid container centered>
+        <Grid id="editProfile-page" container centered>
           <Grid.Column>
             <Header as="h1" textAlign="center" inverted className="edit-profile-header">
               Peter Sadowski
@@ -35,6 +35,7 @@ class EditProfile extends React.Component {
             <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
               <Segment>
                 {/* try condense the age/height/weight and graduation/major lines */}
+                <TextField name='name' label="Image URL"/>
                 <TextField name='name' label="Sport"/>
                 <NumField name='name' label="Age"/>
                 <TextField name='name' label="Height"/>

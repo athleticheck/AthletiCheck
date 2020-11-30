@@ -10,7 +10,7 @@ class AdminAthleteProfile extends React.Component {
   /** Render the Admin Profile page */
   render() {
     return (
-        <Container>
+        <Container id="adminProfile-page">
           <Container textAlign='center' className="profile-page-spacing">
             <Divider horizontal>
               <Button

@@ -9,7 +9,7 @@ export default class AboutUs extends React.Component {
       color: 'white',
     };
     return (
-        <Container>
+        <Container id="aboutUs-page">
             <Header as='h1' style={divStyle} textAlign="center" size="huge" className='about-welcome'> WELCOME </Header>
             <Header as='h2' textAlign="center" size="medium">We are AthletiCheck, providing you with the most efficient way to manage Athletes.</Header>
           <Grid>
@@ -24,7 +24,7 @@ export default class AboutUs extends React.Component {
             <Grid.Row>
             <Grid.Column>
               <Image src='https://franzadam.github.io/images/MeTi.jpg' />
-              <Header>FRANZ ADAMS</Header>
+              <Header>FRANZ ADAM</Header>
             </Grid.Column>
             <Grid.Column>
               <Image src='https://robert-lemon-uhm.github.io/images/SquarePic.png' />
