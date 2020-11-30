@@ -24,8 +24,8 @@ class AdminAthleteProfile extends React.Component {
           <Container textAlign='center' className="profile-page-spacing">
             <Divider horizontal>
               <Button
-                  size='massive' inverted color='green'
-                  as={NavLink} activeClassName="active" exact to="/add-visit">
+                  size='massive' inverted color='green' as={NavLink}
+                  activeClassName="active" exact to={`/add-visit/${this.props.profile._id}`}>
                 Add New Visit
               </Button>
             </Divider>
@@ -33,8 +33,8 @@ class AdminAthleteProfile extends React.Component {
           <Card fluid centered className="profile-page-profile">
             <Profile profile={this.props.profile}/>
             <Card.Content extra>
-              <Button fluid
-                      as={NavLink} activeClassName="active" exact to="/edit-profile">
+              <Button fluid as={NavLink} activeClassName="active"
+                      exact to={`/edit-profile/${this.props.profile._id}`}>
                 Edit Profile
               </Button>
             </Card.Content>
