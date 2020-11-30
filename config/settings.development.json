@@ -9,20 +9,6 @@
     { "email": "john@foo.com", "password": "changeme" }
   ],
 
-  "defaultProfiles": [
-    {
-      "email" : "john@foo.com",
-      "firstName": "Peter",
-      "lastName": "Sadowski",
-      "sport": "Football",
-      "age": 21,
-      "height": "6'5",
-      "weight": "200 lbs",
-      "graduation": 2022,
-      "major": "Communications"
-    }
-  ],
-
   "defaultData": [
     { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },

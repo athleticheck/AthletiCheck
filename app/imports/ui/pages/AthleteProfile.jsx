@@ -1,18 +1,27 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Card, Header, Divider } from 'semantic-ui-react';
+import { Container, Card, Header, Divider, Loader } from 'semantic-ui-react';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 import Visit from '../components/Visit';
 import Profile from '../components/Profile';
+import { Profiles } from '../../api/profile/Profiles';
+import { Visits } from '../../api/visit/Visits';
 
-/** Renders the Page for adding a document. */
+/** Renders the Page. */
 class AthleteProfile extends React.Component {
 
-  /** Render the Profile page */
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+    return (this.props.ready) ? this.renderAthleteProfile() : <Loader active>Getting Data</Loader>;
+  }
+
+  /** Render the Profile page */
+  renderAthleteProfile() {
     return (
         <Container id="profile-page" className='profile-page-container'>
           <Card fluid centered className="profile-page-profile">
-            <Profile userId={Meteor.userId}/>
+            <Profile profile={this.props.profile[0]}/> {/* this MIGHT fix it? */}
           </Card>
           <Container className='profile-page-spacing'>
             <Divider horizontal>
@@ -21,15 +30,17 @@ class AthleteProfile extends React.Component {
           </Container>
           <Container className='profile-page-spacing'>
             <Card.Group>
-              <Visit date={new Date().toDateString()} trainer="trainer3@gmail.com"
-                     note="Back injured from carrying the entire team.  He shouldn't play again until his team practices more, in an effort to avoid future back injuries"
-                     cleared={false}/>
-              <Visit date={new Date().toDateString()} trainer="trainer2@gmail.com"
-                     note="This man is in the best shape I have ever seen.  He should play as often as possible!"
-                     cleared={true}/>
-              <Visit date={new Date().toDateString()} trainer="trainer1@gmail.com"
-                     note="Ankle injured from running 180 miles per hour.  I recommend icing ankle, but it shoud be fine"
-                     cleared={true}/>
+              {this.props.visits.length !== 0 ? ( // if there are visits, display them
+                  this.props.visits.map((visit, index) => <Visit key={index} visit={visit}/>)
+              ) : ( // else, display an empty message
+                  <Card fluid>
+                    <Card.Content>
+                      <Header as='h3' textAlign='center' disabled>
+                        No recorded visits with a trainer
+                      </Header>
+                    </Card.Content>
+                  </Card>
+              )}
             </Card.Group>
           </Container>
         </Container>
@@ -37,4 +48,21 @@ class AthleteProfile extends React.Component {
   }
 }
 
-export default AthleteProfile;
+/** Require data to be passed to this component. */
+AthleteProfile.propTypes = {
+  profile: PropTypes.array.isRequired, // should be obj, but see fix on line 24
+  visits: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Get access to Profiles and Visits documents.
+  const ProfilesSubscription = Meteor.subscribe(Profiles.userPublicationName);
+  const VisitsSubscription = Meteor.subscribe(Visits.userPublicationName);
+  return {
+    profile: Profiles.collection.find({}).fetch(),
+    visits: Visits.collection.find({}).fetch(),
+    ready: ProfilesSubscription.ready() && VisitsSubscription.ready(),
+  };
+})(AthleteProfile);

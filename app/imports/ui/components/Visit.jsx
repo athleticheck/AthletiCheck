@@ -8,7 +8,7 @@ class Visit extends React.Component {
     return (
         <Card fluid>
           <Card.Content>
-            {this.props.cleared === true ? (
+            {this.props.visit.cleared === true ? (
                 <Label color='green' ribbon='right'>
                   CLEARED <Icon name='checkmark'/>
                 </Label>
@@ -18,13 +18,13 @@ class Visit extends React.Component {
                 </Label>
             )}
             <Card.Header>
-              {this.props.date}
+              {this.props.visit.date}
             </Card.Header>
             <Card.Meta>
-              by {this.props.trainer}
+              by {this.props.visit.trainer}
             </Card.Meta>
             <Card.Description>
-              {this.props.note}
+              {this.props.visit.description}
             </Card.Description>
           </Card.Content>
         </Card>
@@ -34,10 +34,8 @@ class Visit extends React.Component {
 
 /** Require a document to be passed to this component. */
 Visit.propTypes = {
-  date: PropTypes.string.isRequired,
-  trainer: PropTypes.string.isRequired,
-  note: PropTypes.string.isRequired,
-  cleared: PropTypes.bool.isRequired,
+  visit: PropTypes.object.isRequired,
+  // comments: PropTypes.array.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */

@@ -1,14 +1,24 @@
 import React from 'react';
-import { Card, Container, Header, Button, Divider } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { Card, Container, Header, Button, Divider, Loader } from 'semantic-ui-react';
 import { withRouter, NavLink } from 'react-router-dom';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 import Profile from '../components/Profile';
-// import Visit from '../components/Visit';
+import { Profiles } from '../../api/profile/Profiles';
+import { Visits } from '../../api/visit/Visits';
+import Visit from '../components/Visit';
 
-/** Renders the Page for adding a document. */
+/** Renders the Page. */
 class AdminAthleteProfile extends React.Component {
 
-  /** Render the Admin Profile page */
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+    return (this.props.ready) ? this.renderAdminProfilePage() : <Loader active>Getting Data</Loader>;
+  }
+
+  /** Render the Admin Profile page */
+  renderAdminProfilePage() {
     return (
         <Container id="adminProfile-page">
           <Container textAlign='center' className="profile-page-spacing">
@@ -21,7 +31,7 @@ class AdminAthleteProfile extends React.Component {
             </Divider>
           </Container>
           <Card fluid centered className="profile-page-profile">
-            <Profile/> {/* NEED TO PASS VALUES TO THIS */}
+            <Profile profile={this.props.profile}/>
             <Card.Content extra>
               <Button fluid
                       as={NavLink} activeClassName="active" exact to="/edit-profile">
@@ -36,13 +46,17 @@ class AdminAthleteProfile extends React.Component {
           </Container>
           <Container className='profile-page-spacing'>
             <Card.Group>
-              <Card fluid>
-                <Card.Content>
-                  <Header as='h3' textAlign='center' disabled>
-                  No recorded visits with a trainer
-                </Header>
-                </Card.Content>
-              </Card>
+              {this.props.visits.length !== 0 ? ( // if there are visits, display them
+                  this.props.visits.map((visit, index) => <Visit key={index} visit={visit}/>)
+              ) : ( // else, display an empty message
+                  <Card fluid>
+                    <Card.Content>
+                      <Header as='h3' textAlign='center' disabled>
+                        No recorded visits with a trainer
+                      </Header>
+                    </Card.Content>
+                  </Card>
+              )}
             </Card.Group>
           </Container>
         </Container>
@@ -50,4 +64,23 @@ class AdminAthleteProfile extends React.Component {
   }
 }
 
-export default withRouter(AdminAthleteProfile);
+/** Require data to be passed to this component. */
+AdminAthleteProfile.propTypes = {
+  profile: PropTypes.object.isRequired,
+  visits: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withRouter(withTracker(({ match }) => {
+  // Get the profileID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
+  const profileId = match.params._id;
+  // Get access to Profiles and Visits documents.
+  const ProfilesSubscription = Meteor.subscribe(Profiles.adminPublicationName);
+  const VisitsSubscription = Meteor.subscribe(Visits.adminPublicationName);
+  return {
+    profile: Profiles.collection.findOne(profileId),
+    visits: Visits.collection.find({ profileId: profileId }).fetch(),
+    ready: ProfilesSubscription.ready() && VisitsSubscription.ready(),
+  };
+}))(AdminAthleteProfile);

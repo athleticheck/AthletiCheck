@@ -12,9 +12,10 @@ class ProfilesCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       userId: String,
-      email: String,
+      // email: String,
       firstName: String,
       lastName: String,
+      imageURL: String,
       sport: String,
       age: Number, // MILESTONE 3, keep track of birthday!
       height: String,
