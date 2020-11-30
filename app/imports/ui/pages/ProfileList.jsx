@@ -7,7 +7,7 @@ class ProfileList extends React.Component {
   /** Render the Profile page */
   render() {
     return (
-        <Container>
+        <Container id="profileList-page">
           <Divider hidden/>
           <Table size='large' celled padded striped stackable singleLine>
             <Table.Header fullWidth>

@@ -9,7 +9,7 @@ class AthleteProfile extends React.Component {
   /** Render the Profile page */
   render() {
     return (
-        <Container className='profile-page-container'>
+        <Container id="profile-page" className='profile-page-container'>
           <Card fluid centered className="profile-page-profile">
             <Profile/>
           </Card>
