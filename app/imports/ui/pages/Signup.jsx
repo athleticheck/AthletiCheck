@@ -1,10 +1,11 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment, Image } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
-import { Profiles } from '../../api/profile/Profiles';
 import swal from 'sweetalert';
+import { Profiles } from '../../api/profile/Profiles';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -23,29 +24,27 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { firstName, lastName, email, password } = this.state; // firstName, lastName
-    Accounts.createUser({ firstName, lastName, email, username: email, password }, (err) => {
+    const { firstName, lastName, email, password } = this.state;
+    Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        this.setState({ error: '', redirectToReferer: true });
+        // create new profile
+        const userId = Meteor.users.findOne({ username: email }).userId;
+        const tempStr = 'change-me!';
+        const tempInt = -1;
+        Profiles.collection.insert({ userId, firstName, lastName, sport: tempStr, age: tempInt,
+              height: tempStr, weight: tempStr, graduation: tempStr, major: tempStr },
+            (error) => {
+              if (error) {
+                swal('Error', error.message, 'error');
+              } else {
+                swal('Success', 'New athlete profile registered! Talk to a trainer to finish your account setup.', 'success');
+                this.setState({ error: '', redirectToReferer: true });
+              }
+            });
       }
     });
-    const userId = Meteor.users.findOne({ username: email }).userId;
-    const temp = "change-me!";
-
-    Profiles.collection.insert({ userId, firstName, lastName},
-        (error) => {
-          if (error) {
-            swal('Error', error.message, 'error');
-          } else {
-            swal('Success', 'Profile added successfully', 'success');
-            formRef.reset();
-          }
-        });
-    // grab userId of newly created user
-    // create a new profile for that user
-    //  - userId, firstName, lastName filled in.  everything else blank
   }
 
   /** Display the signup form. Redirect to add page after successful registration and login. */

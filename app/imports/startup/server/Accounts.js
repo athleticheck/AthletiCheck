@@ -4,11 +4,9 @@ import { Roles } from 'meteor/alanning:roles';
 
 /* eslint-disable no-console */
 
-function createUser(firstName, lastName, email, password, role) {
+function createUser(email, password, role) {
   console.log(`  Creating new user ${email}.`);
   const userID = Accounts.createUser({
-    firstName: firstName,
-    lastName: lastName,
     username: email,
     email: email,
     password: password,
