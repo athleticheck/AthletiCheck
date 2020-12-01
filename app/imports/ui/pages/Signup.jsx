@@ -30,10 +30,10 @@ class Signup extends React.Component {
         this.setState({ error: err.reason });
       } else {
         // create new profile
-        const userId = Meteor.users.findOne({ username: email }).userId;
+        console.log(Meteor.userId);
         const tempStr = 'change-me!';
         const tempInt = -1;
-        Profiles.collection.insert({ userId, firstName, lastName, sport: tempStr, age: tempInt,
+        Profiles.collection.insert({ userId: Meteor.userId, firstName, lastName, sport: tempStr, age: tempInt, // GET USERID WORKING!!!
               height: tempStr, weight: tempStr, graduation: tempStr, major: tempStr },
             (error) => {
               if (error) {
