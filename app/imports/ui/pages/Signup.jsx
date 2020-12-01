@@ -32,7 +32,7 @@ class Signup extends React.Component {
         // create new profile
         const tempStr = 'change-me!';
         const tempInt = -1;
-        Profiles.collection.insert({ username: email, firstName, lastName, sport: tempStr, imageURL: tempStr, age: tempInt, // GET USERID WORKING!!!
+        Profiles.collection.insert({ username: email, firstName, lastName, sport: tempStr, imageURL: tempStr, age: tempInt,
               height: tempStr, weight: tempStr, graduation: tempStr, major: tempStr },
             (error) => {
               if (error) {
