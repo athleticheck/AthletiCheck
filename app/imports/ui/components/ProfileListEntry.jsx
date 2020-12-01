@@ -16,7 +16,8 @@ class ProfileListEntry extends React.Component {
           <Table.Cell>{this.props.profiles.major}</Table.Cell>
           <Table.Cell>{this.props.profiles.userId}</Table.Cell>
           <Table.Cell>
-            <Button basic as={NavLink} activeClassName="active" exact to="/admin-athlete/{profileId}">
+            <Button basic as={NavLink} activeClassName="active"
+                    exact to={'/admin-profile/${this.props.profile.userId}'}>
               <Icon name='user outline' />
             </Button>
           </Table.Cell>
