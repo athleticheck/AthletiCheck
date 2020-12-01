@@ -6,7 +6,7 @@ import { Profiles } from '../../api/profile/Profiles';
 
 /* eslint-disable no-console */
 
-// Sample Collectsions ===================================================
+// Sample Collections ===================================================
 
 /** Initialize the database with a default data document. */
 function addData(data) {
@@ -22,11 +22,11 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
-// Our Collectsions ======================================================
+// Our Collections ======================================================
 
 /** Initialize the database with a default data document. */
 function addProfile(profile) {
-  console.log(`  Adding: ${profile.userID}`);
+  console.log(`  Adding: ${profile.userId}`);
   Profiles.collection.insert(profile);
 }
 

@@ -1,18 +1,28 @@
 import React from 'react';
-import { Container, Divider, Header, Image, Table } from 'semantic-ui-react';
+import { Container, Divider, Header, Loader, Table } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
+import { Profiles } from '../../api/profile/Profiles';
+import ProfileListEntry from '../components/ProfileListEntry';
 
-/** Renders the Page for adding a document. */
+/** Renders a table containing all of the profiles. Use <Profile> to render each row. */
 class ProfileList extends React.Component {
 
-  /** Render the Profile page */
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+  }
+
+  /** Render the Profile page */
+  renderPage() {
     return (
         <Container id="profileList-page">
           <Divider hidden/>
           <Table size='large' celled padded striped stackable singleLine>
             <Table.Header fullWidth>
               <Table.Row>
-                <Table.HeaderCell colSpan='7' textAlign='center'>
+                <Table.HeaderCell colSpan='8' textAlign='center'>
                   <Header>Profile List</Header>
                 </Table.HeaderCell>
               </Table.Row>
@@ -26,73 +36,11 @@ class ProfileList extends React.Component {
                 <Table.HeaderCell>Age</Table.HeaderCell>
                 <Table.HeaderCell>Year</Table.HeaderCell>
                 <Table.HeaderCell>Major</Table.HeaderCell>
+                <Table.HeaderCell>Profile</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {/* profiles.map(profile => <tableEntry profile='profile'/>) */}
-              <Table.Row>
-                <Table.Cell textAlign='center'>
-                  <Header as='h4' image>
-                    <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini'/>
-                    <Header.Content>
-                    </Header.Content>
-                    {/* <Link to={`/admin-profile/${this.props.profile.userId}`}>Edit</Link> */}
-                    {/* OR profile._id */}
-                    {/* see "contact.jsx" for example */}
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>Smith</Table.Cell>
-                <Table.Cell>Lana</Table.Cell>
-                <Table.Cell>Soccer</Table.Cell>
-                <Table.Cell>20</Table.Cell>
-                <Table.Cell>2</Table.Cell>
-                <Table.Cell>Communications</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell textAlign='center'>
-                  <Header as='h4' image>
-                    <Image src='https://react.semantic-ui.com/images/avatar/small/matthew.png' rounded size='mini' />
-                    <Header.Content>
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>Adams</Table.Cell>
-                <Table.Cell>Sam</Table.Cell>
-                <Table.Cell>Football</Table.Cell>
-                <Table.Cell>24</Table.Cell>
-                <Table.Cell>4</Table.Cell>
-                <Table.Cell>Mathematics</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell textAlign='center'>
-                  <Header as='h4' image>
-                    <Image src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' rounded size='mini' />
-                    <Header.Content>
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>Johnson</Table.Cell>
-                <Table.Cell>Carrie</Table.Cell>
-                <Table.Cell>Volleyball</Table.Cell>
-                <Table.Cell>22</Table.Cell>
-                <Table.Cell>3</Table.Cell>
-                <Table.Cell>Biochemistry</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell textAlign='center'>
-                  <Header as='h4' image>
-                    <Image src='https://react.semantic-ui.com/images/avatar/small/mark.png' rounded size='mini' />
-                    <Header.Content>
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>Smith</Table.Cell>
-                <Table.Cell>Craig</Table.Cell>
-                <Table.Cell>Basketball</Table.Cell>
-                <Table.Cell>22</Table.Cell>
-                <Table.Cell>3</Table.Cell>
-                <Table.Cell>Computer Science</Table.Cell>
-              </Table.Row>
+              {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
             </Table.Body>
           </Table>
           <Divider hidden/>
@@ -101,4 +49,18 @@ class ProfileList extends React.Component {
   }
 }
 
-export default ProfileList;
+/** Require an array of Stuff documents in the props. */
+ProfileList.propTypes = {
+  profiles: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Get access to Profiles documents.
+  const subscription = Meteor.subscribe(Profiles.adminPublicationName);
+  return {
+    profiles: Profiles.collection.find({}).fetch(),
+    ready: subscription.ready(),
+  };
+})(ProfileList);
