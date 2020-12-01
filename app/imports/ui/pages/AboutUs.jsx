@@ -20,9 +20,9 @@ export default class AboutUs extends React.Component {
               <Image floated='left' size='large' style={imgStyle} src='https://www.khon2.com/wp-content/uploads/sites/8/2020/07/UH-door.jpg?w=1360&h=815&crop=1' />
            <div className='about-aboutus'>
              <Header textAlign='center' > We are AthletiCheck</Header>
-            <p>At AthletiCheck, we want to solve the biggest problem within athletic programs: complicated record systems for athletes and athletic trainers. </p>
+             <p>At AthletiCheck, we want to solve the biggest problem within athletic programs: <b> complicated record systems for athletes and athletic trainers.</b> </p>
             <p>Athletic programs need a user friendly interface that is easily accessible by athletic trainers in order to reach their athletes effectively.
-              An ultimate solution to reduce time spent on documentation. Athletes need a comprehensive history of each visit with their trainer to reference. </p>
+              There needs to be an ultimate solution to reduce time spent on documentation. Athletes need a comprehensive history of each visit with their trainer to reference. </p>
             <p>The solution to this problem is <strong>AthletiCheck</strong>, a website that creates an easy-to-use record system targeted at both the athletes and their trainers.</p>
            </div>
             </div>
