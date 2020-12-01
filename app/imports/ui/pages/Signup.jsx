@@ -1,5 +1,4 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment, Image } from 'semantic-ui-react';
@@ -25,15 +24,15 @@ class Signup extends React.Component {
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
     const { firstName, lastName, email, password } = this.state;
+    console.log(firstName, lastName, email, password);
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
         // create new profile
-        console.log(Meteor.userId);
         const tempStr = 'change-me!';
         const tempInt = -1;
-        Profiles.collection.insert({ userId: Meteor.userId, firstName, lastName, sport: tempStr, age: tempInt, // GET USERID WORKING!!!
+        Profiles.collection.insert({ username: email, firstName, lastName, sport: tempStr, imageURL: tempStr, age: tempInt, // GET USERID WORKING!!!
               height: tempStr, weight: tempStr, graduation: tempStr, major: tempStr },
             (error) => {
               if (error) {
@@ -68,7 +67,7 @@ class Signup extends React.Component {
                       label="First Name"
                       icon="user"
                       iconPosition="left"
-                      name="email"
+                      name="firstName"
                       type="firstName"
                       placeholder="First Name"
                       onChange={this.handleChange}
@@ -77,7 +76,7 @@ class Signup extends React.Component {
                       label="Last Name"
                       icon="user"
                       iconPosition="left"
-                      name="email"
+                      name="lastName"
                       type="lastName"
                       placeholder="Last Name"
                       onChange={this.handleChange}
