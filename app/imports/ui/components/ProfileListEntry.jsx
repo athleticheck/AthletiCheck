@@ -8,16 +8,16 @@ class ProfileListEntry extends React.Component {
   render() {
     return (
         <Table.Row>
-          <Table.Cell>{this.props.profiles.lastName}</Table.Cell>
-          <Table.Cell>{this.props.profiles.firstName}</Table.Cell>
-          <Table.Cell>{this.props.profiles.sport}</Table.Cell>
-          <Table.Cell>{this.props.profiles.age}</Table.Cell>
-          <Table.Cell>{this.props.profiles.graduation()}</Table.Cell>
-          <Table.Cell>{this.props.profiles.major}</Table.Cell>
-          <Table.Cell>{this.props.profiles.userId}</Table.Cell>
+          <Table.Cell>{this.props.profile.lastName}</Table.Cell>
+          <Table.Cell>{this.props.profile.firstName}</Table.Cell>
+          <Table.Cell>{this.props.profile.sport}</Table.Cell>
+          <Table.Cell>{this.props.profile.age}</Table.Cell>
+          <Table.Cell>{this.props.profile.graduation()}</Table.Cell>
+          <Table.Cell>{this.props.profile.major}</Table.Cell>
+          <Table.Cell>{this.props.profile.userId}</Table.Cell>
           <Table.Cell>
             <Button basic as={NavLink} activeClassName="active"
-                    exact to={'/admin-profile/${this.props.profile.userId}'}>
+                    exact to={`/admin-profile/${this.props.profile.userId}`}>
               <Icon name='user outline' />
             </Button>
           </Table.Cell>
@@ -28,7 +28,7 @@ class ProfileListEntry extends React.Component {
 
 /** Require a document to be passed to this component. */
 ProfileListEntry.propTypes = {
-  profiles: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 
 export default ProfileListEntry;
