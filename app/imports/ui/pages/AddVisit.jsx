@@ -22,7 +22,7 @@ class AddVisit extends React.Component {
   /** Render the Profile page */
   render() {
     return (
-        <Grid container centered>
+        <Grid id="addVisit-page" container centered>
           <Grid.Column>
             <Divider hidden />
             <Header as="h1" textAlign="center" inverted>Add New Visit</Header>
