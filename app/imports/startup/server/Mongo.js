@@ -42,10 +42,11 @@ function addProfile(profile) {
 
 /** Initialize the Profiles collection if empty. */
 if (Profiles.collection.find().count() === 0) {
-  console.log('profiles collection is empty!');
   if (Meteor.settings.defaultProfiles) {
     console.log('Creating default profiles.');
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
+  } else {
+    console.log('profiles collection is empty!');
   }
 }
 

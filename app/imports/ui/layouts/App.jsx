@@ -31,19 +31,19 @@ class App extends React.Component {
     return (
         <Router>
           <div>
-            <NavBar/>                                                        {/* EDIT NavBar */}
+            <NavBar/>
             <Switch>
               {/* RE-USED PATHS */}
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <Route path="/signout" component={Signout}/>                    {/* should be protected */}
+              <ProtectedRoute path="/signout" component={Signout}/>
               {/* NEW PATHS */}
-              <Route path="/profile" component={AthleteProfile}/>             {/* should be protected */}
-              <Route path="/admin-profile" component={AdminAthleteProfile}/>  {/* should be admin protected */}
-              <Route path="/edit-profile" component={EditProfile}/>           {/* should be admin protected */}   {/* rename path to include _id */}
-              <Route path="/add-visit" component={AddVisit}/>                 {/* should be admin protected */}
-              <Route path="/profile-list" component={ProfileList}/>           {/* should be admin protected */}
+              <ProtectedRoute path="/profile" component={AthleteProfile}/>
+              <AdminProtectedRoute path="/admin-profile/:_id" component={AdminAthleteProfile}/>
+              <AdminProtectedRoute path="/edit-profile/:_id" component={EditProfile}/>
+              <AdminProtectedRoute path="/add-visit/:_id" component={AddVisit}/>
+              <AdminProtectedRoute path="/profile-list" component={ProfileList}/>
               <Route path="/about" component={AboutUs}/>
               {/* OLD PATHS, DELETE BEFORE FINAL SUBMISSION */}
               <ProtectedRoute path="/list" component={ListStuffOLD}/>
@@ -51,7 +51,7 @@ class App extends React.Component {
               <ProtectedRoute path="/edit/:_id" component={EditStuffOLD}/>
               <AdminProtectedRoute path="/admin" component={ListStuffAdminOLD}/>
               {/* NEED TO EDIT NotFound PAGE */}
-              <Route component={NotFound}/>                                    {/* EDIT NotFound */}
+              <Route component={NotFound}/>
             </Switch>
             <Footer/>                                                          {/* EDIT Footer */}
           </div>

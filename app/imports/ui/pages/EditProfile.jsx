@@ -1,22 +1,26 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
+import swal from 'sweetalert';
 import { AutoForm, ErrorsField, HiddenField, NumField, SubmitField, TextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { Profiles } from '../../api/profile/Profiles';
 
-const bridge = new SimpleSchema2Bridge(Stuffs.schema);
+const bridge = new SimpleSchema2Bridge(Profiles.schema);
 
 /** Renders the Page for editing a single document. */
 class EditProfile extends React.Component {
 
   /** On successful submit, insert the data. */
-  // eslint-disable-next-line no-unused-vars
   submit(data) {
-    // eslint-disable-next-line no-unused-vars
-    const { removeThis } = 5;
+    // check that the _id is what i think it is, and the hiddenFields can be ignored
+    const { imageURL, sport, age, height, weight, graduation, major, _id } = data;
+    Profiles.collection.update(_id, { $set: { imageURL, sport, age, height, weight, graduation, major } },
+        (error) => (error ?
+            swal('Error', error.message, 'error') :
+            swal('Success', 'Item updated successfully', 'success')));
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -30,24 +34,24 @@ class EditProfile extends React.Component {
         <Grid id="editProfile-page" container centered>
           <Grid.Column>
             <Header as="h1" textAlign="center" inverted className="edit-profile-header">
-              Peter Sadowski
+              {this.props.profile.firstName} {this.props.profile.lastName}
             </Header>
-            <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
+            <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.profile}>
               <Segment>
                 {/* try condense the age/height/weight and graduation/major lines */}
-                <TextField name='name' label="Image URL"/>
-                <TextField name='name' label="Sport"/>
-                <NumField name='name' label="Age"/>
-                <TextField name='name' label="Height"/>
-                <TextField name='name' label="Weight"/>
-                <TextField name='name' label="Graduation"/>
-                <TextField name='name' label="Major"/>
-                {/* <TextField name='name'/> */}
-                {/* <NumField name='quantity' decimal={false}/> */}
-                {/* <SelectField name='condition'/> */}
+                {/* check that it auto-fills current data */}
+                <TextField name='imageURL' label="Image URL"/>
+                <TextField name='sport' label="Sport"/>
+                <NumField name='age' label="Age" decimal={false}/>
+                <TextField name='height' label="Height"/>
+                <TextField name='weight' label="Weight"/>
+                <TextField name='graduation' label="Graduation"/>
+                <TextField name='major' label="Major"/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
-                <HiddenField name='owner' />
+                <HiddenField name='userId' />
+                <HiddenField name='firstName' />
+                <HiddenField name='lastName' />
               </Segment>
             </AutoForm>
           </Grid.Column>
@@ -56,9 +60,9 @@ class EditProfile extends React.Component {
   }
 }
 
-/** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
+/** Require the presence of a Profiles document in the props object. Uniforms adds 'model' to the props, which we use. */
 EditProfile.propTypes = {
-  doc: PropTypes.object,
+  profile: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
@@ -66,11 +70,11 @@ EditProfile.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
-  const documentId = match.params._id;
+  const profileId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Stuffs.userPublicationName);
+  const ProfilesSubscription = Meteor.subscribe(Profiles.adminPublicationName);
   return {
-    doc: Stuffs.collection.findOne(documentId),
-    ready: subscription.ready(),
+    profile: Profiles.collection.findOne(profileId),
+    ready: ProfilesSubscription.ready(),
   };
 })(EditProfile);
