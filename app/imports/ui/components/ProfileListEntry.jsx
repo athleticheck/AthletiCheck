@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table, Icon } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
@@ -8,18 +8,19 @@ class ProfileListEntry extends React.Component {
   render() {
     return (
         <Table.Row>
+          <Table.Cell>{this.props.profile.imageURL}</Table.Cell>
           <Table.Cell>{this.props.profile.lastName}</Table.Cell>
           <Table.Cell>{this.props.profile.firstName}</Table.Cell>
           <Table.Cell>{this.props.profile.sport}</Table.Cell>
           <Table.Cell>{this.props.profile.age}</Table.Cell>
           <Table.Cell>{this.props.profile.graduation}</Table.Cell>
           <Table.Cell>{this.props.profile.major}</Table.Cell>
-          <Table.Cell>{this.props.profile.userId}</Table.Cell>
           <Table.Cell>
             <Button basic as={NavLink} activeClassName="active"
-                    exact to={`/admin-profile/${this.props.profile.userId}`}>
-              <Icon name='user outline' />
-            </Button>
+                    exact to={`/admin-profile/${this.props.profile.username}`}>
+              {this.props.profile.username}
+            </Button></Table.Cell>
+          <Table.Cell>
           </Table.Cell>
         </Table.Row>
     );

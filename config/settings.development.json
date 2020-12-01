@@ -17,7 +17,7 @@
   ],
 
   "defaultProfiles": [
-    { "userId": "defaultA", "firstName": "John", "lastName": "Smith", "sport": "Sport", "age": 21, "height": "5'11", "weight": "180lbs", "graduation": "Spring 2022", "major": "Computer Science" },
-    { "userId": "defaultB", "firstName": "Jane", "lastName": "Doe", "sport": "Sport", "age": 22, "height": "5'8", "weight": "165lbs", "graduation": "Spring 2022", "major": "Computer Science" }
+    { "username": "defaultA@test.com", "firstName": "John", "lastName": "Smith", "imageURL": "../images/defaultA.png", "sport": "Sport", "age": 21, "height": "5'11", "weight": "180lbs", "graduation": "Spring 2022", "major": "Computer Science" },
+    { "username": "defaultB@test.com", "firstName": "Jane", "lastName": "Doe", "imageURL": "../images/defaultB.jpg", "sport": "Sport", "age": 22, "height": "5'8", "weight": "165lbs", "graduation": "Spring 2022", "major": "Computer Science" }
   ]
 }
