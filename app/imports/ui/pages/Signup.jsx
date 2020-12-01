@@ -14,7 +14,7 @@ class Signup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { firstName: '', lastName: '', email: '', password: '', error: '', redirectToReferer: false };
+    this.state = { email: '', password: '', error: '', redirectToReferer: false };
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -24,25 +24,12 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { firstName, lastName, email, password } = this.state;
+    const { email, password } = this.state;
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        // create new profile
-        const userId = Meteor.users.findOne({ username: email }).userId;
-        const tempStr = 'change-me!';
-        const tempInt = -1;
-        Profiles.collection.insert({ userId, firstName, lastName, sport: tempStr, age: tempInt,
-              height: tempStr, weight: tempStr, graduation: tempStr, major: tempStr },
-            (error) => {
-              if (error) {
-                swal('Error', error.message, 'error');
-              } else {
-                swal('Success', 'New athlete profile registered! Talk to a trainer to finish your account setup.', 'success');
-                this.setState({ error: '', redirectToReferer: true });
-              }
-            });
+        this.setState({ error: '', redirectToReferer: true });
       }
     });
   }
@@ -64,25 +51,6 @@ class Signup extends React.Component {
               </Header>
               <Form onSubmit={this.submit}>
                 <Segment stacked>
-                  <Form.Input
-                      label="First Name"
-                      icon="user"
-                      iconPosition="left"
-                      name="email"
-                      type="firstName"
-                      placeholder="First Name"
-                      onChange={this.handleChange}
-                  />
-                  <Form.Input
-                      label="Last Name"
-                      icon="user"
-                      iconPosition="left"
-                      name="email"
-                      type="lastName"
-                      placeholder="Last Name"
-                      onChange={this.handleChange}
-                  />
-
                   <Form.Input
                       label="Email"
                       icon="user"
