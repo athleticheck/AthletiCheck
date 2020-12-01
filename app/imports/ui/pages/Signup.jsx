@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment, Image } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
+import { Profiles } from '../../api/profile/Profiles';
+import swal from 'sweetalert';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -11,7 +13,7 @@ class Signup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', error: '', redirectToReferer: false };
+    this.state = { firstName: '', lastName: '', email: '', password: '', error: '', redirectToReferer: false };
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -21,14 +23,26 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password } = this.state; // firstName, lastName
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    const { firstName, lastName, email, password } = this.state; // firstName, lastName
+    Accounts.createUser({ firstName, lastName, email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
         this.setState({ error: '', redirectToReferer: true });
       }
     });
+    const userId = Meteor.users.findOne({ username: email }).userId;
+    const temp = "change-me!";
+
+    Profiles.collection.insert({ userId, firstName, lastName},
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+          } else {
+            swal('Success', 'Profile added successfully', 'success');
+            formRef.reset();
+          }
+        });
     // grab userId of newly created user
     // create a new profile for that user
     //  - userId, firstName, lastName filled in.  everything else blank
@@ -56,7 +70,7 @@ class Signup extends React.Component {
                       icon="user"
                       iconPosition="left"
                       name="email"
-                      type="email"
+                      type="firstName"
                       placeholder="First Name"
                       onChange={this.handleChange}
                   />
@@ -65,7 +79,7 @@ class Signup extends React.Component {
                       icon="user"
                       iconPosition="left"
                       name="email"
-                      type="email"
+                      type="lastName"
                       placeholder="Last Name"
                       onChange={this.handleChange}
                   />
