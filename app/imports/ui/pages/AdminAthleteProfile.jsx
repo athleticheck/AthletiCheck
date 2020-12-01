@@ -72,7 +72,7 @@ AdminAthleteProfile.propTypes = {
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-export default withRouter(withTracker(({ match }) => {
+const AdminAthleteProfileWithTracker = withTracker(({ match }) => {
   // Get the profileID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const profileId = match.params._id;
   // Get access to Profiles and Visits documents.
@@ -83,4 +83,8 @@ export default withRouter(withTracker(({ match }) => {
     visits: Visits.collection.find({ profileId: profileId }).fetch(),
     ready: ProfilesSubscription.ready() && VisitsSubscription.ready(),
   };
-}))(AdminAthleteProfile);
+})(AdminAthleteProfile);
+/** Wrap this component in withRouter since we use the <Link> React Router element. */
+const AdminAthleteProfileWithRouter = withRouter(AdminAthleteProfileWithTracker);
+
+export default AdminAthleteProfileWithRouter;
