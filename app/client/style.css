@@ -1,14 +1,53 @@
 /* Background Image */
 .background-landing{
   background-image: url('images/landing-background.png');
+  box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.6);
   background-size: cover;
   background-position: center;
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
   height: 500px;
 }
 .about-us-container {
   background-color: #BDBFC1;
   padding-top: 20px;
+}
+.about-us-main-background {
+  background: url('images/greentile.png');
+  background-repeat: repeat;
+  margin-top: -13px;
+}
+.about-us-background {
+  background-color: #BDBFC1;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+.our-team-background {
+  background-color: #BDBFC1;
+  padding-top: 40px;
+}
+
+.about-aboutus > p{
+  text-align: center;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  font-size: 18px;
+}
+.about-aboutus > .ui.header{
+  text-align: center;
+  font-size: 25px;
+}
+.name-bio-aboutus {
+  padding-top: 20px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.ui.small.button {
+  margin-top: 30px;
+}
+.landing-grid {
+  padding-top: 20px;
+  text-align: center;
+  padding-bottom: 10px;
 }
 .ui.inverted.segment > .ui.header{
   border: none !important;
@@ -86,8 +125,8 @@
   padding: 0;
   margin: 0;
 }
-.logo-description {
-  background-color: black;
+.ui.inverted.header {
   color: white;
+  font-size: 20px;
   margin: 10px;
 }
