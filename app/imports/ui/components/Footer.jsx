@@ -11,9 +11,10 @@ class Footer extends React.Component {
         <footer>
           <div style={divStyle} className="ui center aligned container">
             <hr />
-              Department of Information and Computer Sciences <br />
+              AthletiCheck <br />
               University of Hawaii<br />
               Honolulu, HI 96822 <br />
+              Visit us: <br />
             <a href="https://athleticheck.github.io/">AthletiCheck Project</a>
           </div>
         </footer>

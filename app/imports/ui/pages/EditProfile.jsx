@@ -35,6 +35,7 @@ class EditProfile extends React.Component {
             <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
               <Segment>
                 {/* try condense the age/height/weight and graduation/major lines */}
+                <TextField name='name' label="Image URL"/>
                 <TextField name='name' label="Sport"/>
                 <NumField name='name' label="Age"/>
                 <TextField name='name' label="Height"/>
