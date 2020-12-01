@@ -12,7 +12,7 @@ class ProfileListEntry extends React.Component {
           <Table.Cell>{this.props.profile.firstName}</Table.Cell>
           <Table.Cell>{this.props.profile.sport}</Table.Cell>
           <Table.Cell>{this.props.profile.age}</Table.Cell>
-          <Table.Cell>{this.props.profile.graduation()}</Table.Cell>
+          <Table.Cell>{this.props.profile.graduation}</Table.Cell>
           <Table.Cell>{this.props.profile.major}</Table.Cell>
           <Table.Cell>{this.props.profile.userId}</Table.Cell>
           <Table.Cell>
