@@ -36,7 +36,7 @@ class ProfileList extends React.Component {
                 <Table.HeaderCell>Age</Table.HeaderCell>
                 <Table.HeaderCell>Year</Table.HeaderCell>
                 <Table.HeaderCell>Major</Table.HeaderCell>
-                <Table.HeaderCell>User ID</Table.HeaderCell>
+                <Table.HeaderCell>Profile</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
