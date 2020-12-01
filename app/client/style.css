@@ -3,7 +3,7 @@
   background-image: url('images/landing-background.png');
   background-size: cover;
   background-position: center;
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
   height: 500px;
 }
 /*
@@ -12,24 +12,38 @@
   padding-top: 20px;
 }
 */
+.about-us-main-background {
+  background: url('images/greentile.png');
+  background-repeat: repeat;
+  margin-top: 0px;
+}
+.footer {
+  background-color: #333634;
+}
 .about-us-background {
-  background-color: white;
+  background-color: #BDBFC1;
   padding-bottom: 25px;
   padding-top: 25px;
 }
 .our-team-background {
   background-color: #BDBFC1;
+  padding-top: 40px;
 }
 
 .about-aboutus > p{
   text-align: center;
-  margin-inline-start: 20px;
-  margin-inline-end: 20px;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
   font-size: 18px;
+}
+.about-aboutus > .ui.header{
+  text-align: center;
+  font-size: 25px;
 }
 .name-bio-aboutus {
   padding-top: 20px;
   text-align: center;
+  padding-bottom: 10px;
 }
 .ui.inverted.segment > .ui.header{
   border: none !important;
