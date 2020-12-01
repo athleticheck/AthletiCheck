@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profile/Profiles';
-import Profile from '../components/Profile';
+import ProfileListEntry from '../components/ProfileListEntry';
 
 /** Renders a table containing all of the profiles. Use <Profile> to render each row. */
 class ProfileList extends React.Component {
@@ -40,7 +40,7 @@ class ProfileList extends React.Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {this.props.profiles.map((profile) => <Profile key={profile._id} profile={profile} />)}
+              {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
             </Table.Body>
           </Table>
           <Divider hidden/>
