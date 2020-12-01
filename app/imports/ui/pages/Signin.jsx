@@ -45,7 +45,7 @@ export default class Signin extends React.Component {
         <Container id="signin-page" className='element-under-nav-container'>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
-              <Image src='/images/circular-logo.png' size='small' centered/>
+              <Image src='/images/circular-logo.png' size='medium' centered/>
               <Header as="h1" textAlign="center" inverted>
                 Login
               </Header>

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Card, Container, Grid, Header, Image, Label } from 'semantic-ui-react';
+import { Button, Grid, Header, Image, Label } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
+const buttonStyle = { width: '100%' };
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 class CardsOriginal extends React.Component {
   render() {

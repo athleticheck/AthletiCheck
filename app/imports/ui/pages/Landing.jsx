@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import BottomLanding from '../components/BottomLanding';
 
 const menuStyle = { height: '500px' };
-// const buttonStyle = { width: '100%' };
 const transLogo = '../images/bigger-circle.png';
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
