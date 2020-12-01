@@ -1,6 +1,7 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 class ProfileListEntry extends React.Component {
@@ -14,6 +15,11 @@ class ProfileListEntry extends React.Component {
           <Table.Cell>{this.props.profiles.graduation()}</Table.Cell>
           <Table.Cell>{this.props.profiles.major}</Table.Cell>
           <Table.Cell>{this.props.profiles.userId}</Table.Cell>
+          <Table.Cell>
+            <Button basic as={NavLink} activeClassName="active" exact to="/admin-athlete/{profileId}">
+              Go to Profile
+            </Button>
+          </Table.Cell>
         </Table.Row>
     );
   }
