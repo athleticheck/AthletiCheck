@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table } from 'semantic-ui-react';
+import { Button, Table, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ class ProfileListEntry extends React.Component {
           <Table.Cell>{this.props.profiles.userId}</Table.Cell>
           <Table.Cell>
             <Button basic as={NavLink} activeClassName="active" exact to="/admin-athlete/{profileId}">
-              Go to Profile
+              <Icon name='user outline' />
             </Button>
           </Table.Cell>
         </Table.Row>
