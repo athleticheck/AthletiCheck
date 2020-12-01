@@ -26,7 +26,7 @@ if (Stuffs.collection.find().count() === 0) {
 
 /** Initialize the database with a default data document. */
 function addProfile(profile) {
-  console.log(`  Adding: ${profile.userId}`);
+  console.log(`  Adding: ${profile.username}`);
   Profiles.collection.insert(profile);
 }
 
