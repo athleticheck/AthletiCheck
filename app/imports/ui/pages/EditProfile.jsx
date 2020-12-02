@@ -49,7 +49,7 @@ class EditProfile extends React.Component {
                 <TextField name='major' label="Major"/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
-                <HiddenField name='userId' />
+                <HiddenField name='username' />
                 <HiddenField name='firstName' />
                 <HiddenField name='lastName' />
               </Segment>

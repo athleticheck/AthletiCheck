@@ -6,7 +6,9 @@
 
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "john@foo.com", "password": "changeme" },
+    { "email": "defaultA@test.com", "password": "changeme" },
+    { "email": "defaultB@test.com", "password": "changeme" }
   ],
 
   "defaultData": [
@@ -14,5 +16,10 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultProfiles": [
+    { "username": "defaultA@test.com", "firstName": "John", "lastName": "Smith", "imageURL": "../images/defaultA.png", "sport": "Sport", "age": 21, "height": "5'11", "weight": "180lbs", "graduation": "Spring 2022", "major": "Computer Science" },
+    { "username": "defaultB@test.com", "firstName": "Jane", "lastName": "Doe", "imageURL": "../images/defaultB.jpg", "sport": "Sport", "age": 22, "height": "5'8", "weight": "165lbs", "graduation": "Spring 2022", "major": "Computer Science" }
   ]
 }
