@@ -5,6 +5,7 @@ import { AutoForm, ErrorsField, HiddenField, NumField, SubmitField, TextField } 
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Profiles } from '../../api/profile/Profiles';
 
@@ -13,14 +14,25 @@ const bridge = new SimpleSchema2Bridge(Profiles.schema);
 /** Renders the Page for editing a single document. */
 class EditProfile extends React.Component {
 
+  /** Initialize state fields. */
+  constructor(props) {
+    super(props);
+    this.state = { redirectToProfile: false };
+  }
+
   /** On successful submit, insert the data. */
   submit(data) {
     // check that the _id is what i think it is, and the hiddenFields can be ignored
     const { imageURL, sport, age, height, weight, graduation, major, _id } = data;
     Profiles.collection.update(_id, { $set: { imageURL, sport, age, height, weight, graduation, major } },
-        (error) => (error ?
-            swal('Error', error.message, 'error') :
-            swal('Success', 'Item updated successfully', 'success')));
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+          } else {
+            swal('Success', 'Item updated successfully', 'success');
+            this.setState({ redirectToProfile: true });
+          }
+        });
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -30,6 +42,10 @@ class EditProfile extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
+    // redirect back to admin-profile page once edit is complete
+    if (this.state.redirectToProfile) {
+      return <Redirect to={`/admin-profile/${this.props.profile._id}/`}/>;
+    }
     return (
         <Grid id="editProfile-page" container centered>
           <Grid.Column>

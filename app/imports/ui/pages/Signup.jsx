@@ -24,15 +24,15 @@ class Signup extends React.Component {
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
     const { firstName, lastName, email, password } = this.state;
-    console.log(firstName, lastName, email, password);
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
         // create new profile
+        const tempPic = '../images/defaultUser.png';
         const tempStr = 'change-me!';
         const tempInt = -1;
-        Profiles.collection.insert({ username: email, firstName, lastName, sport: tempStr, imageURL: tempStr, age: tempInt, // GET USERID WORKING!!!
+        Profiles.collection.insert({ username: email, firstName, lastName, sport: tempStr, imageURL: tempPic, age: tempInt,
               height: tempStr, weight: tempStr, graduation: tempStr, major: tempStr },
             (error) => {
               if (error) {

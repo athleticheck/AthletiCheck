@@ -1,5 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
+import { Redirect } from 'react-router-dom';
 import { Container, Card, Header, Divider, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -13,6 +15,9 @@ class AthleteProfile extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+    if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
+      return <Redirect to={'/profile-list'}/>;
+    }
     return (this.props.ready) ? this.renderAthleteProfile() : <Loader active>Getting Data</Loader>;
   }
 
@@ -21,7 +26,7 @@ class AthleteProfile extends React.Component {
     return (
         <Container id="profile-page" className='profile-page-container'>
           <Card fluid centered className="profile-page-profile">
-            <Profile profile={this.props.profile[0]}/> {/* this MIGHT fix it? */}
+            <Profile profile={this.props.profile[0]}/> {/* pass the profile object */}
           </Card>
           <Container className='profile-page-spacing'>
             <Divider horizontal>
