@@ -14,7 +14,7 @@ class AdminAthleteProfile extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready) ? this.renderAdminProfilePage() : <Loader active>Getting Data</Loader>;
+    return (this.props.ready && this.props.profile) ? this.renderAdminProfilePage() : <Loader active>Getting Data</Loader>;
   }
 
   /** Render the Admin Profile page */
@@ -66,7 +66,7 @@ class AdminAthleteProfile extends React.Component {
 
 /** Require data to be passed to this component. */
 AdminAthleteProfile.propTypes = {
-  profile: PropTypes.object.isRequired,
+  profile: PropTypes.object, // make not required OR if statement return
   visits: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };

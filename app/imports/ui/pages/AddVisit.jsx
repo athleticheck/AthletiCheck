@@ -32,8 +32,9 @@ class AddVisit extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    const { clearedMaybe, description, profileId, date, trainer } = data;
-    const cleared = Boolean(clearedMaybe);
+    const { cleared, description, profileId, date, trainer } = data;
+    console.log(cleared);
+    // const cleared = Boolean(clearedMaybe);
     Visits.collection.insert({ cleared, description, profileId, date, trainer },
         (error) => {
           if (error) {
