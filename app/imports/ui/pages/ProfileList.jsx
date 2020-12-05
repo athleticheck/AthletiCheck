@@ -14,39 +14,109 @@ class ProfileList extends React.Component {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
+  /** Semantic UI React Sort function. */
+  function exampleReducer(state, action) {
+    switch (action.type) {
+      case 'CHANGE_SORT':
+        if (state.column === action.column) {
+          return {
+            ...state,
+            data: state.data.reverse(),
+            direction:
+                state.direction === 'ascending' ? 'descending' : 'ascending',
+          }
+        }
+
+        return {
+          column: action.column,
+          data: _.sortBy(state.data, [action.column]),
+          direction: 'ascending',
+        }
+      default:
+        throw new Error()
+    }
+  }
+
   /** Render the Profile page */
   renderPage() {
-    return (
-        <Container id="profileList-page">
-          <Divider hidden/>
-          <Table size='large' celled padded striped stackable singleLine>
-            <Table.Header fullWidth>
-              <Table.Row>
-                <Table.HeaderCell colSpan='8' textAlign='center'>
-                  <Header>Profile List</Header>
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Header fullWidth>
-              <Table.Row>
-                <Table.HeaderCell textAlign='center'>Athlete</Table.HeaderCell>
-                <Table.HeaderCell>Last Name</Table.HeaderCell>
-                <Table.HeaderCell>First Name</Table.HeaderCell>
-                <Table.HeaderCell>Sport</Table.HeaderCell>
-                <Table.HeaderCell>Age</Table.HeaderCell>
-                <Table.HeaderCell>Year</Table.HeaderCell>
-                <Table.HeaderCell>Major</Table.HeaderCell>
-                <Table.HeaderCell>Profile</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
-            </Table.Body>
-          </Table>
-          <Divider hidden/>
-        </Container>
-    );
+    function TableExampleSortable() {
+      const [state, dispatch] = React.useReducer(this.exampleReducer, {
+        column: null,
+        data: tableData,
+        direction: null,
+      })
+      const { column, data, direction } = state
+
+      return (
+          <Container id="profileList-page">
+            <Divider hidden/>
+            <Table size='large' celled padded striped stackable singleLine sortable>
+              <Table.Header fullWidth>
+                <Table.Row>
+                  <Table.HeaderCell colSpan='8' textAlign='center'>
+                    <Header>Profile List</Header>
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Header fullWidth>
+                <Table.Row>
+                  <Table.HeaderCell textAlign='center'
+                                    sorted={column === 'athlete' ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'athlete' })}>
+
+                    Athlete
+                  </Table.HeaderCell>
+                  <Table.HeaderCell textAlign='center'
+                      sorted={column === 'lastname' ? direction : null}
+                      onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'lastname' })}>
+                    Last Name
+                  </Table.HeaderCell>
+                  <Table.HeaderCell textAlign='center'
+                                    sorted={column === 'firstname' ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'firstname' })}>
+                    First Name
+                  </Table.HeaderCell>
+                  <Table.HeaderCell textAlign='center'
+                                    sorted={column === 'sport' ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'sport' })}>
+                    Sport
+                  </Table.HeaderCell>
+                  <Table.HeaderCell textAlign='center'
+                                    sorted={column === 'age' ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'age' })}>
+                    Age
+                  </Table.HeaderCell>
+                  <Table.HeaderCell textAlign='center'
+                                    sorted={column === 'year' ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'year' })}>
+                    Year
+                  </Table.HeaderCell>
+                  <Table.HeaderCell textAlign='center'
+                                    sorted={column === 'major' ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'major' })}>
+                    Major
+                  </Table.HeaderCell>
+                  <Table.HeaderCell textAlign='center'
+                                    sorted={column === 'profile' ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'profile' })}>
+                    Profile
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {data.map(({ athlete, lastname, firstname, sport, age, year, major, profile }) => (
+                    <Table.Row key='name'>
+                    {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile}/>)}
+                    </Table.Row>
+                ))}
+              </Table.Body>
+            </Table>
+            <Divider hidden/>
+          </Container>
+      );
+    }
   }
+}
 }
 
 /** Require an array of Stuff documents in the props. */
