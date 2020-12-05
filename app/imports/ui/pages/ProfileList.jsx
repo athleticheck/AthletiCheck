@@ -37,16 +37,16 @@ class ProfileList extends React.Component {
     }
   }
 
+  function TableExampleSortable() {
+    const [state, dispatch] = React.useReducer(exampleReducer, {
+      column: null,
+      data: {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile}/>)},
+      direction: null,
+    })
+    const { column, data, direction } = state
+
   /** Render the Profile page */
   renderPage() {
-    function TableExampleSortable() {
-      const [state, dispatch] = React.useReducer(this.exampleReducer, {
-        column: null,
-        data: tableData,
-        direction: null,
-      })
-      const { column, data, direction } = state
-
       return (
           <Container id="profileList-page">
             <Divider hidden/>
@@ -60,55 +60,48 @@ class ProfileList extends React.Component {
               </Table.Header>
               <Table.Header fullWidth>
                 <Table.Row>
-                  <Table.HeaderCell textAlign='center'
-                                    sorted={column === 'athlete' ? direction : null}
-                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'athlete' })}>
-
+                  <Table.HeaderCell textAlign='center'>
                     Athlete
                   </Table.HeaderCell>
                   <Table.HeaderCell textAlign='center'
-                      sorted={column === 'lastname' ? direction : null}
-                      onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'lastname' })}>
+                      sorted={column === this.props.profile.lastName ? direction : null}
+                      onClick={() => dispatch({ type: 'CHANGE_SORT', column: this.props.profile.lastName })}>
                     Last Name
                   </Table.HeaderCell>
                   <Table.HeaderCell textAlign='center'
-                                    sorted={column === 'firstname' ? direction : null}
-                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'firstname' })}>
+                                    sorted={column === this.props.profile.firstName ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: this.props.profile.firstName })}>
                     First Name
                   </Table.HeaderCell>
                   <Table.HeaderCell textAlign='center'
-                                    sorted={column === 'sport' ? direction : null}
-                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'sport' })}>
+                                    sorted={column === this.props.profile.sport ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: this.props.profile.sport })}>
                     Sport
                   </Table.HeaderCell>
                   <Table.HeaderCell textAlign='center'
-                                    sorted={column === 'age' ? direction : null}
-                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'age' })}>
+                                    sorted={column === this.props.profile.age ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: this.props.profile.age })}>
                     Age
                   </Table.HeaderCell>
                   <Table.HeaderCell textAlign='center'
-                                    sorted={column === 'year' ? direction : null}
-                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'year' })}>
+                                    sorted={column === this.props.profile.graduation ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: this.props.profile.graduation })}>
                     Year
                   </Table.HeaderCell>
                   <Table.HeaderCell textAlign='center'
-                                    sorted={column === 'major' ? direction : null}
-                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'major' })}>
+                                    sorted={column === this.props.profile.major ? direction : null}
+                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: this.props.profile.major })}>
                     Major
                   </Table.HeaderCell>
-                  <Table.HeaderCell textAlign='center'
-                                    sorted={column === 'profile' ? direction : null}
-                                    onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'profile' })}>
+                  <Table.HeaderCell textAlign='center'>
                     Profile
                   </Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {data.map(({ athlete, lastname, firstname, sport, age, year, major, profile }) => (
-                    <Table.Row key='name'>
+                    <Table.Row>
                     {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile}/>)}
                     </Table.Row>
-                ))}
               </Table.Body>
             </Table>
             <Divider hidden/>
