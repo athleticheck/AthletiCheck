@@ -40,7 +40,7 @@ class ProfileList extends React.Component {
   function TableExampleSortable() {
     const [state, dispatch] = React.useReducer(exampleReducer, {
       column: null,
-      data: {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile}/>)},
+      data: {this.props.profiles},
       direction: null,
     })
     const { column, data, direction } = state
