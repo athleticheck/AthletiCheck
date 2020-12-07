@@ -1,10 +1,12 @@
 import React from 'react';
-import { Container, Divider, Header, Loader, Table } from 'semantic-ui-react';
+import SmartDataTable from 'react-smart-data-table';
+import { Loader } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profile/Profiles';
-import ProfileListEntry from '../components/ProfileListEntry';
+import 'react-smart-data-table/dist/react-smart-data-table.css';
+// import ProfileListEntry from '../components/ProfileListEntry';
 
 /** Renders a table containing all of the profiles. Use <Profile> to render each row. */
 class ProfileList extends React.Component {
@@ -17,7 +19,33 @@ class ProfileList extends React.Component {
   /** Render the Profile page */
   renderPage() {
     return (
-        <Container id="profileList-page">
+            <SmartDataTable
+                data={this.props.profiles}
+                name="profile-list"
+                className="ui compact selectable table"
+                sortable />
+/*                headers='headers'
+                orderedHeaders='orderedHeaders'
+                hideUnordered='hideUnordered'
+                filterValue='filterValue'
+                perPage='perPage'
+                withToggles
+                withLinks
+                withHeader
+                onRowClick={this.onRowClick}
+                parseImg={{
+                  style: {
+                    border: '1px solid #ddd',
+                    borderRadius: '2px',
+                    padding: '3px',
+                    width: '60px',
+                  },
+                  className: 'ui avatar image',
+                }}
+                dynamic* /
+            />
+            // document.getElementById('app')
+        /* <Container id="profileList-page">
           <Divider hidden/>
           <Table size='large' celled padded striped stackable singleLine>
             <Table.Header fullWidth>
@@ -44,7 +72,7 @@ class ProfileList extends React.Component {
             </Table.Body>
           </Table>
           <Divider hidden/>
-        </Container>
+        </Container> */
     );
   }
 }
