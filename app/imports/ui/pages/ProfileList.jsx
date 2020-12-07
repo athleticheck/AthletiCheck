@@ -6,6 +6,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profile/Profiles';
 import ProfileListEntry from '../components/ProfileListEntry';
+import state from 'sweetalert';
 
 /** Renders a table containing all of the profiles. Use <Profile> to render each row. */
 class ProfileList extends React.Component {
