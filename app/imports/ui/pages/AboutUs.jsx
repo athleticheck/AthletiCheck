@@ -32,7 +32,7 @@ export default class AboutUs extends React.Component {
                   <Grid.Column style={bioStyle}>
                     <Image src='../images/franz.jpg' size='medium' circular/>
                     <div className="name-bio-aboutus">
-                    <Header textAlign='center'>FRANZ ADAMS</Header>
+                    <Header textAlign='center'>FRANZ ADAM</Header>
                     <a href = "mailto: fadam@hawaii.edu"> <Icon name='mail' />Email Franz</a>
                     </div>
                   </Grid.Column>
