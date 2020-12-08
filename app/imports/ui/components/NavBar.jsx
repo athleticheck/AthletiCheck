@@ -16,7 +16,8 @@ class NavBar extends React.Component {
       <Menu size='massive' style={menuStyle} attached="top" borderless stackable>
         <Menu.Item as={NavLink} activeClassName="" exact to="/"><Image src={cornerLogo} size='small' />
         </Menu.Item>
-      {this.props.currentUser && !Roles.userIsInRole(Meteor.userId(), 'admin') ? ([<Menu.Item as={NavLink} activeClassName="active" exact to="/profile" key='profile'>My Profile</Menu.Item>]
+      {this.props.currentUser && !Roles.userIsInRole(Meteor.userId(), 'admin') ? ([<Menu.Item as={NavLink} activeClassName="active" exact to="/profile" key='profile'>My Profile</Menu.Item>,
+            <Menu.Item as='a' href='https://docs.google.com/forms/d/e/1FAIpQLSdeC4vggGnSE4inATxnOSFc41FsDpuk42gcblPQ17AW_86FOw/viewform?vc=0&c=0&w=1' key='googleform'>COVID Form</Menu.Item>]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
             [<Menu.Item as={NavLink} activeClassName="active" exact to="/profile-list" key='profilelist'>Profile List</Menu.Item>]
