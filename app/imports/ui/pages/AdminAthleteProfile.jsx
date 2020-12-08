@@ -14,7 +14,6 @@ class AdminAthleteProfile extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    // return (this.props.ready && this.props.profile) ? this.renderAdminProfilePage() : <Loader active>Getting Data</Loader>;
     return (this.props.ready && this.props.profileId) ? this.renderAdminProfilePage() : <Loader active>Getting Data</Loader>;
   }
 
@@ -83,8 +82,6 @@ const AdminAthleteProfileWithTracker = withTracker(({ match }) => {
   const VisitsSubscription = Meteor.subscribe(Visits.adminPublicationName);
   return {
     profileId: profileId,
-    // profiles: Profiles.collection.find({}).fetch(),
-    // visits: Visits.collection.find({}).fetch(),
     ready: ProfilesSubscription.ready() && VisitsSubscription.ready(),
   };
 })(AdminAthleteProfile);
