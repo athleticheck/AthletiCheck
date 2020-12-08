@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Image } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Popup } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 
 const cornerLogo = '../images/useme.png';
@@ -17,7 +17,9 @@ class NavBar extends React.Component {
         <Menu.Item as={NavLink} activeClassName="" exact to="/"><Image src={cornerLogo} size='small' />
         </Menu.Item>
       {this.props.currentUser && !Roles.userIsInRole(Meteor.userId(), 'admin') ? ([<Menu.Item as={NavLink} activeClassName="active" exact to="/profile" key='profile'>My Profile</Menu.Item>,
-            <Menu.Item as='a' href='https://docs.google.com/forms/d/e/1FAIpQLSdeC4vggGnSE4inATxnOSFc41FsDpuk42gcblPQ17AW_86FOw/viewform?vc=0&c=0&w=1' key='googleform'>COVID Form</Menu.Item>]
+            <Popup key='popup' content='DO NOT FILL THIS FORM OUT. IT IS THE REAL UH COVID FORM.'
+            trigger={ <Menu.Item as='a' href='https://docs.google.com/forms/d/e/1FAIpQLSdeC4vggGnSE4inATxnOSFc41FsDpuk42gcblPQ17AW_86FOw/viewform?vc=0&c=0&w=1'
+                                 key='googleform'>COVID Form</Menu.Item>} />]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
             [<Menu.Item as={NavLink} activeClassName="active" exact to="/profile-list" key='profilelist'>Profile List</Menu.Item>]
