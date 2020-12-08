@@ -13,7 +13,7 @@ import { Visits } from '../../api/visit/Visits';
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
   profileId: String,
-  date: String,
+  date: Date,
   trainer: String,
   cleared: { type: Boolean, required: false },
   description: String,

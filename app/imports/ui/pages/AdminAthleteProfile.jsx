@@ -22,9 +22,7 @@ class AdminAthleteProfile extends React.Component {
   renderAdminProfilePage() {
     // define the profile and visits associated with athlete
     const profile = Profiles.collection.findOne(this.props.profileId);
-    console.log('got profiles');
     const visits = Visits.collection.find({ profileId: this.props.profileId }).fetch();
-    console.log('got visits');
     return (
         <Container id="adminProfile-page">
           <Container textAlign='center' className="profile-page-spacing">

@@ -12,7 +12,7 @@ class VisitsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       profileId: String,
-      date: String,
+      date: Date,
       trainer: String,
       cleared: Boolean,
       description: String,
