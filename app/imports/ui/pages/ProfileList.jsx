@@ -1,4 +1,5 @@
 import React from 'react';
+import { MDBDataTable } from 'mdbreact';
 import { Container, Divider, Header, Loader, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -40,7 +41,12 @@ class ProfileList extends React.Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
+              <MDBDataTable
+                striped
+                bordered
+                small
+                data={this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
+                />
             </Table.Body>
           </Table>
           <Divider hidden/>
