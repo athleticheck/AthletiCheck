@@ -14,27 +14,33 @@ class AdminAthleteProfile extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready && this.props.profile) ? this.renderAdminProfilePage() : <Loader active>Getting Data</Loader>;
+    // return (this.props.ready && this.props.profile) ? this.renderAdminProfilePage() : <Loader active>Getting Data</Loader>;
+    return (this.props.ready && this.props.profileId) ? this.renderAdminProfilePage() : <Loader active>Getting Data</Loader>;
   }
 
   /** Render the Admin Profile page */
   renderAdminProfilePage() {
+    // define the profile and visits associated with athlete
+    const profile = Profiles.collection.findOne(this.props.profileId);
+    console.log('got profiles');
+    const visits = Visits.collection.find({ profileId: this.props.profileId }).fetch();
+    console.log('got visits');
     return (
         <Container id="adminProfile-page">
           <Container textAlign='center' className="profile-page-spacing">
             <Divider horizontal>
               <Button
                   size='massive' inverted color='green' as={NavLink}
-                  activeClassName="active" exact to={`/add-visit/${this.props.profile._id}`}>
+                  activeClassName="active" exact to={`/add-visit/${profile._id}`}>
                 Add New Visit
               </Button>
             </Divider>
           </Container>
           <Card fluid centered className="profile-page-profile">
-            <Profile profile={this.props.profile}/>
+            <Profile profile={profile}/>
             <Card.Content extra>
               <Button fluid as={NavLink} activeClassName="active"
-                      exact to={`/edit-profile/${this.props.profile._id}`}>
+                      exact to={`/edit-profile/${profile._id}`}>
                 Edit Profile
               </Button>
             </Card.Content>
@@ -46,8 +52,8 @@ class AdminAthleteProfile extends React.Component {
           </Container>
           <Container className='profile-page-spacing'>
             <Card.Group>
-              {this.props.visits.length !== 0 ? ( // if there are visits, display them
-                  this.props.visits.map((visit, index) => <Visit key={index} visit={visit}/>)
+              {visits.length !== 0 ? ( // if there are visits, display them
+                  visits.map((visit, index) => <Visit key={index} visit={visit}/>)
               ) : ( // else, display an empty message
                   <Card fluid>
                     <Card.Content>
@@ -66,8 +72,7 @@ class AdminAthleteProfile extends React.Component {
 
 /** Require data to be passed to this component. */
 AdminAthleteProfile.propTypes = {
-  profile: PropTypes.object, // make not required OR if statement return
-  visits: PropTypes.array.isRequired,
+  profileId: PropTypes.string.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -79,8 +84,9 @@ const AdminAthleteProfileWithTracker = withTracker(({ match }) => {
   const ProfilesSubscription = Meteor.subscribe(Profiles.adminPublicationName);
   const VisitsSubscription = Meteor.subscribe(Visits.adminPublicationName);
   return {
-    profile: Profiles.collection.findOne(profileId),
-    visits: Visits.collection.find({ profileId: profileId }).fetch(),
+    profileId: profileId,
+    // profiles: Profiles.collection.find({}).fetch(),
+    // visits: Visits.collection.find({}).fetch(),
     ready: ProfilesSubscription.ready() && VisitsSubscription.ready(),
   };
 })(AdminAthleteProfile);

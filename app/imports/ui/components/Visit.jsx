@@ -19,6 +19,8 @@ class Visit extends React.Component {
             )}
             <Card.Header>
               {this.props.visit.date}
+              {/* {this.props.visit.date.toLocaleDateString('en-US')} */}
+              {/* {this.props.visit.date.toLocaleString('en-US')} */}
             </Card.Header>
             <Card.Meta>
               by {this.props.visit.trainer}
