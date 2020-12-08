@@ -9,11 +9,59 @@ import ProfileListEntry from '../components/ProfileListEntry';
 
 /** Renders a table containing all of the profiles. Use <Profile> to render each row. */
 class ProfileList extends React.Component {
-
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
+
+    const data = {
+      columns: [
+        {
+          label: 'Athlete',
+          field: 'athlete',
+          width: 150
+        },
+        {
+          label: 'Last Name',
+          field: 'lastName',
+          sort: 'asc',
+          width: 150
+        },
+        {
+          label: 'First Name',
+          field: 'firstName',
+          sort: 'asc',
+          width: 150
+        },
+        {
+          label: 'Sport',
+          field: 'sport',
+          sort: 'asc',
+          width: 150
+        },
+        {
+          label: 'Age',
+          field: 'age',
+          sort: 'asc',
+          width: 150
+        },
+        {
+          label: 'Graduation Date',
+          field: 'graduation',
+          sort: 'asc',
+          width: 150
+        },
+        {
+          label: 'Major',
+          field: 'major',
+          sort: 'asc',
+          width: 150
+        },
+      ],
+      rows: [
+        {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
+      ]
+    }
 
   /** Render the Profile page */
   renderPage() {
@@ -42,11 +90,11 @@ class ProfileList extends React.Component {
             </Table.Header>
             <Table.Body>
               <MDBDataTable
-                striped
-                bordered
-                small
-                data={this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
-                />
+                  striped
+                  bordered
+                  small
+                  data={this.data}
+              />
             </Table.Body>
           </Table>
           <Divider hidden/>
