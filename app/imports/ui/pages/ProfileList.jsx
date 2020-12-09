@@ -16,16 +16,19 @@ class ProfileList extends React.Component {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
+  getColumns(profile) {
+    return { lastName: profile.lastName, firstName: profile.firstName, sport: profile.sport, age: profile.age, graduation: profile.graduation, major: profile.major};
+  }
+
   /** Render the Profile page */
   renderPage() {
     return (
             <SmartDataTable
-                data={this.props.profiles}
+                data={this.props.profiles.map(this.getColumns) }
                 name="profile-list"
                 className="ui compact selectable table"
                 sortable />
 /*                headers='headers'
-                orderedHeaders='orderedHeaders'
                 hideUnordered='hideUnordered'
                 filterValue='filterValue'
                 perPage='perPage'
@@ -88,7 +91,7 @@ export default withTracker(() => {
   // Get access to Profiles documents.
   const subscription = Meteor.subscribe(Profiles.adminPublicationName);
   return {
-    profiles: Profiles.collection.find({}).fetch(),
+    profiles: Profiles.collection.find({}, { sort: { lastName: 1 } }).fetch(),
     ready: subscription.ready(),
   };
 })(ProfileList);
