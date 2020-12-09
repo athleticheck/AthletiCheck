@@ -8,7 +8,7 @@ class ProfileListEntry extends React.Component {
   render() {
     return (
         <Table.Row>
-          <Table.Cell>
+          {/* <Table.Cell>
             <Image centered size='tiny' rounded
                              src={this.props.profile.imageURL}/>
           </Table.Cell>
@@ -17,7 +17,7 @@ class ProfileListEntry extends React.Component {
           <Table.Cell>{this.props.profile.sport}</Table.Cell>
           <Table.Cell>{this.props.profile.age}</Table.Cell>
           <Table.Cell>{this.props.profile.graduation}</Table.Cell>
-          <Table.Cell>{this.props.profile.major}</Table.Cell>
+          <Table.Cell>{this.props.profile.major}</Table.Cell> */}
           <Table.Cell>
             <Button basic as={NavLink} activeClassName="active"
                     exact to={`/admin-profile/${this.props.profile._id}`}>
