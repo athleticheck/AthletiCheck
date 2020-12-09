@@ -52,7 +52,8 @@ class ProfileList extends React.Component {
               </Table.Row>
             </Table.Header>
               <Table.Body>
-              <SmartDataTable
+                <Table.Cell>
+                <SmartDataTable
                   data={this.props.profiles.map(this.getColumns) }
                   name="profile-list"
                   className="ui compact selectable table"
@@ -73,6 +74,7 @@ class ProfileList extends React.Component {
                   }}
               />
                 {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
+                </Table.Cell>
               </Table.Body>
           </Table>
           <Divider hidden/>
