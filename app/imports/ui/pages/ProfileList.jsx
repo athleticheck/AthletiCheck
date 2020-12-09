@@ -1,13 +1,13 @@
 import React from 'react';
 import SmartDataTable from 'react-smart-data-table';
-import { Loader, Container, Divider, Table, Header, Input } from 'semantic-ui-react';
+import { Loader, Container, Divider, Table, Header, Input, Redirect } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 // import { NavLink } from 'react-router-dom';
 import { Profiles } from '../../api/profile/Profiles';
 import 'react-smart-data-table/dist/react-smart-data-table.css';
-import ProfileListEntry from '../components/ProfileListEntry';
+// import ProfileListEntry from '../components/ProfileListEntry';
 
 /** Renders a table containing all of the profiles. Use <Profile> to render each row. */
 class ProfileList extends React.Component {
@@ -22,15 +22,12 @@ class ProfileList extends React.Component {
       age: profile.age, graduation: profile.graduation, major: profile.major, profile: profile.username };
   }
 
-  /*    onRowClick() {
-       <Button basic as={NavLink} activeClassName="active"
-              exact to={`/admin-profile/${this.props.profiles._id}`}>
-        {this.props.profiles.username}
-      </Button>;
-      console.log('clicked');
+      onRowClick() {
+        console.log('clicked');
+        return <Redirect to={`/admin-profile/${this.props.profiles._id}`}/>;
       }
 
-      /!** Handle Signin submission using Meteor's account mechanism. *!/
+  /*    /!** Handle Signin submission using Meteor's account mechanism. *!/
     submit = () => {
       const { email, password } = this.state;
       Meteor.loginWithPassword(email, password, (err) => {
