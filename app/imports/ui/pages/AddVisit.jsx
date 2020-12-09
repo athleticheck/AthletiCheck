@@ -13,7 +13,7 @@ import { Visits } from '../../api/visit/Visits';
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
   profileId: String,
-  date: String,
+  date: Date,
   trainer: String,
   cleared: { type: Boolean, required: false },
   description: String,
@@ -32,9 +32,9 @@ class AddVisit extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    const { clearedMaybe, description, profileId, date, trainer } = data;
-    const cleared = Boolean(clearedMaybe);
-    Visits.collection.insert({ cleared, description, profileId, date, trainer },
+    const { cleared, description, profileId, date, trainer } = data;
+    // console.log(cleared);
+    Visits.collection.insert({ cleared: !!cleared, description, profileId, date, trainer },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
