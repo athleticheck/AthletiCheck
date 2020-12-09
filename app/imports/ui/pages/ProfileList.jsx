@@ -1,6 +1,6 @@
 import React from 'react';
 import SmartDataTable from 'react-smart-data-table';
-import { Loader, Container, Divider, Table, Header } from 'semantic-ui-react';
+import { Loader, Container, Divider, Table, Header, Input } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
@@ -35,14 +35,14 @@ class ProfileList extends React.Component {
     return (
         <Container id="profileList-page">
           <Divider hidden/>
-          {/* <Input
+          <Input
               list='filter'
               placeholder='Filter results...'
               icon='search'
               type='text'
               name='filterValue'
-              value={this.props.profiles.lastName}
-          /> */}
+              // value={this.props.profiles.lastName}
+          />
           <Table size='large' celled padded striped stackable>
             <Table.Header fullWidth>
               <Table.Row>
@@ -51,7 +51,7 @@ class ProfileList extends React.Component {
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-              <Table.Cell>
+              <Table.Body>
               <SmartDataTable
                   data={this.props.profiles.map(this.getColumns) }
                   name="profile-list"
@@ -73,7 +73,7 @@ class ProfileList extends React.Component {
                   }}
               />
                 {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
-              </Table.Cell>
+              </Table.Body>
           </Table>
           <Divider hidden/>
         </Container>
