@@ -1,10 +1,10 @@
 import React from 'react';
 import SmartDataTable from 'react-smart-data-table';
-import { Loader, Container, Divider, Table, Header } from 'semantic-ui-react';
+import { Loader, Container, Divider, Table, Header, Input, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Profiles } from '../../api/profile/Profiles';
 import 'react-smart-data-table/dist/react-smart-data-table.css';
 // import ProfileListEntry from '../components/ProfileListEntry';
@@ -22,11 +22,19 @@ class ProfileList extends React.Component {
       age: profile.age, graduation: profile.graduation, major: profile.major, profile: profile.username };
   }
 
-  /** Render the Profile page */
+   /** Render the Profile page */
   renderPage() {
     return (
         <Container id="profileList-page">
           <Divider hidden/>
+          <Input
+              list='filter'
+              placeholder='Filter results...'
+              icon='search'
+              type='text'
+              name='filterValue'
+              value={this.props.profiles.lastName}
+          />
           <Table size='large' celled padded striped stackable singleLine>
             <Table.Header fullWidth>
               <Table.Row>
@@ -48,15 +56,16 @@ class ProfileList extends React.Component {
               </Table.Row>
             </Table.Header> */}
             <Table.Body>
+              <Table.Cell>
               <SmartDataTable
                   data={this.props.profiles.map(this.getColumns) }
                   name="profile-list"
                   className="ui selectable table"
                   sortable
-                  onRowClick={this.onRowClick}
+                  // onRowClick={this.onRowClick}
                   withToggles
                   perPage={0}
-                  // filterValue
+                  filterValue={this.props.profiles.lastName}
                   parseImg={{
                     style: {
                       border: '1px solid #ddd',
@@ -68,6 +77,10 @@ class ProfileList extends React.Component {
                     className: 'ui avatar image',
                   }}
               />
+              </Table.Cell>
+              <Table.Cell>
+
+              </Table.Cell>
             </Table.Body>
           </Table>
           <Divider hidden/>
