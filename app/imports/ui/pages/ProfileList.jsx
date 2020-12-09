@@ -17,7 +17,7 @@ class ProfileList extends React.Component {
   }
 
   getColumns(profile) {
-    return { lastName: profile.lastName, firstName: profile.firstName, sport: profile.sport, age: profile.age, graduation: profile.graduation, major: profile.major};
+    return { imageURL: profile.imageURL, lastName: profile.lastName, firstName: profile.firstName, sport: profile.sport, age: profile.age, graduation: profile.graduation, major: profile.major };
   }
 
   /** Render the Profile page */
@@ -27,15 +27,7 @@ class ProfileList extends React.Component {
                 data={this.props.profiles.map(this.getColumns) }
                 name="profile-list"
                 className="ui compact selectable table"
-                sortable />
-/*                headers='headers'
-                hideUnordered='hideUnordered'
-                filterValue='filterValue'
-                perPage='perPage'
-                withToggles
-                withLinks
-                withHeader
-                onRowClick={this.onRowClick}
+                sortable
                 parseImg={{
                   style: {
                     border: '1px solid #ddd',
@@ -43,6 +35,17 @@ class ProfileList extends React.Component {
                     padding: '3px',
                     width: '60px',
                   },
+                }}
+            />
+                /* headers='headers'
+                hideUnordered='hideUnordered'
+                filterValue='filterValue'
+                perPage='perPage'
+                withToggles
+                withLinks
+                withHeader
+                onRowClick={this.onRowClick}
+
                   className: 'ui avatar image',
                 }}
                 dynamic* /
