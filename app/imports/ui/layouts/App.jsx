@@ -37,7 +37,7 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <ProtectedRoute path="/signout" component={Signout}/>
+              <Route path="/signout" component={Signout}/>
               {/* NEW PATHS */}
               <ProtectedRoute path="/profile" component={AthleteProfile}/>
               <AdminProtectedRoute path="/admin-profile/:_id" component={AdminAthleteProfile}/>
