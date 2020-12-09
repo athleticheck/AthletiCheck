@@ -17,7 +17,7 @@ class ProfileList extends React.Component {
   }
 
   getColumns(profile) {
-    return { imageURL: profile.imageURL, lastName: profile.lastName, firstName: profile.firstName, sport: profile.sport, age: profile.age, graduation: profile.graduation, major: profile.major };
+    return { athlete: profile.imageURL, lastName: profile.lastName, firstName: profile.firstName, sport: profile.sport, age: profile.age, graduation: profile.graduation, major: profile.major };
   }
 
   /** Render the Profile page */
