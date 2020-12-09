@@ -8,7 +8,6 @@ import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profile/Profiles';
 import 'react-smart-data-table/dist/react-smart-data-table.css';
 import ProfileListEntry from '../components/ProfileListEntry';
-// import ProfileListEntry from '../components/ProfileListEntry';
 
 /** Renders a table containing all of the profiles. Use <Profile> to render each row. */
 class ProfileList extends React.Component {
@@ -22,6 +21,14 @@ class ProfileList extends React.Component {
     return { athlete: profile.imageURL, lastName: profile.lastName, firstName: profile.firstName, sport: profile.sport,
       age: profile.age, graduation: profile.graduation, major: profile.major, profile: profile.username };
   }
+
+/*   onRowClick() {
+    /!* <Button basic as={NavLink} activeClassName="active"
+            exact to={`/admin-profile/${this.props.profiles._id}`}>
+      {this.props.profiles.username}
+    </Button>; *!/
+    console.log('clicked');
+    } */
 
    /** Render the Profile page */
   renderPage() {
@@ -44,46 +51,10 @@ class ProfileList extends React.Component {
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            {/* <Table.Header fullWidth>
-              <Table.Row>
-                <Table.HeaderCell textAlign='center'>Athlete</Table.HeaderCell>
-                <Table.HeaderCell>Last Name</Table.HeaderCell>
-                <Table.HeaderCell>First Name</Table.HeaderCell>
-                <Table.HeaderCell>Sport</Table.HeaderCell>
-                <Table.HeaderCell>Age</Table.HeaderCell>
-                <Table.HeaderCell>Year</Table.HeaderCell>
-                <Table.HeaderCell>Major</Table.HeaderCell>
-                <Table.HeaderCell>Profile</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header> */}
             <Table.Body>
-              <Table.Cell>
-              <SmartDataTable
-                  data={this.props.profiles.map(this.getColumns) }
-                  name="profile-list"
-                  className="ui selectable table"
-                  sortable
-                  // onRowClick={this.onRowClick}
-                  withToggles
-                  perPage={0}
-                  filterValue={this.props.profiles.lastName}
-                  parseImg={{
-                    style: {
-                      border: '1px solid #ddd',
-                      borderRadius: '2px',
-                      padding: '0px',
-                      width: '100px',
-                      height: '100px',
-                    },
-                    className: 'ui avatar image',
-                  }}
-                  dynamic
-              />
-              </Table.Cell>
               {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
             </Table.Body>
           </Table>
-          <Divider hidden/>
         </Container>
     );
   }
