@@ -1,12 +1,13 @@
 import React from 'react';
 import SmartDataTable from 'react-smart-data-table';
-import { Loader, Container, Divider, Table, Header, Input, Button } from 'semantic-ui-react';
+import { Loader, Container, Divider, Table, Header, Input } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { Profiles } from '../../api/profile/Profiles';
 import 'react-smart-data-table/dist/react-smart-data-table.css';
+import ProfileListEntry from '../components/ProfileListEntry';
 // import ProfileListEntry from '../components/ProfileListEntry';
 
 /** Renders a table containing all of the profiles. Use <Profile> to render each row. */
@@ -35,7 +36,7 @@ class ProfileList extends React.Component {
               name='filterValue'
               value={this.props.profiles.lastName}
           />
-          <Table size='large' celled padded striped stackable singleLine>
+          <Table size='large' celled padded striped stackable>
             <Table.Header fullWidth>
               <Table.Row>
                 <Table.HeaderCell colSpan='8' textAlign='center'>
@@ -76,11 +77,10 @@ class ProfileList extends React.Component {
                     },
                     className: 'ui avatar image',
                   }}
+                  dynamic
               />
               </Table.Cell>
-              <Table.Cell>
-
-              </Table.Cell>
+              {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
             </Table.Body>
           </Table>
           <Divider hidden/>
