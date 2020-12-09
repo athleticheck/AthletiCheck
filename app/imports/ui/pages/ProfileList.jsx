@@ -1,10 +1,10 @@
 import React from 'react';
 import SmartDataTable from 'react-smart-data-table';
-import { Loader, Container, Divider, Table, Header, Button } from 'semantic-ui-react';
+import { Loader, Container, Divider, Table, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { Profiles } from '../../api/profile/Profiles';
 import 'react-smart-data-table/dist/react-smart-data-table.css';
 // import ProfileListEntry from '../components/ProfileListEntry';
@@ -35,47 +35,39 @@ class ProfileList extends React.Component {
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            <Table.Header fullWidth>
+            {/* <Table.Header fullWidth>
               <Table.Row>
                 <Table.HeaderCell textAlign='center'>Athlete</Table.HeaderCell>
-{/*                <Table.HeaderCell>Last Name</Table.HeaderCell>
+                <Table.HeaderCell>Last Name</Table.HeaderCell>
                 <Table.HeaderCell>First Name</Table.HeaderCell>
                 <Table.HeaderCell>Sport</Table.HeaderCell>
                 <Table.HeaderCell>Age</Table.HeaderCell>
                 <Table.HeaderCell>Year</Table.HeaderCell>
-                <Table.HeaderCell>Major</Table.HeaderCell> */}
+                <Table.HeaderCell>Major</Table.HeaderCell>
                 <Table.HeaderCell>Profile</Table.HeaderCell>
               </Table.Row>
-            </Table.Header>
+            </Table.Header> */}
             <Table.Body>
-              <Table.Cell>
               <SmartDataTable
                   data={this.props.profiles.map(this.getColumns) }
                   name="profile-list"
-                  className="ui compact selectable table"
+                  className="ui selectable table"
                   sortable
                   onRowClick={this.onRowClick}
                   withToggles
-                  withLinks
-                  perPage={25}
+                  perPage={0}
                   // filterValue
                   parseImg={{
                     style: {
                       border: '1px solid #ddd',
                       borderRadius: '2px',
-                      padding: '3px',
-                      width: '60px',
+                      padding: '0px',
+                      width: '100px',
+                      height: '100px',
                     },
                     className: 'ui avatar image',
                   }}
               />
-              </Table.Cell>
-              <Table.Cell>
-                <Button basic as={NavLink} activeClassName="active"
-                        exact to={`/admin-profile/${this.props.profiles._id}`}>
-                  {this.props.profiles.username}
-                </Button>
-              </Table.Cell>
             </Table.Body>
           </Table>
           <Divider hidden/>
