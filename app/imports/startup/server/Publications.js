@@ -17,7 +17,7 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 
 // If logged in, then publish Profiles documents owned by this user. Otherwise publish nothing.
 Meteor.publish(Profiles.userPublicationName, function () {
-  if (this.userId) {
+  if (this.userId && !Roles.userIsInRole(this.userId, 'admin')) {
     const username = Meteor.users.findOne(this.userId).username;
     return Profiles.collection.find({ username: username });
   }
@@ -26,7 +26,7 @@ Meteor.publish(Profiles.userPublicationName, function () {
 
 // If logged in, then publish Visits documents owned by this user. Otherwise publish nothing.
 Meteor.publish(Visits.userPublicationName, function () {
-  if (this.userId) {
+  if (this.userId && !Roles.userIsInRole(this.userId, 'admin')) {
     const username = Meteor.users.findOne(this.userId).username;
     const profileId = Profiles.collection.findOne({ username: username });
     return Visits.collection.find({ profileId: profileId });
@@ -36,7 +36,7 @@ Meteor.publish(Visits.userPublicationName, function () {
 
 // If logged in, then publish Comments documents owned by this user. Otherwise publish nothing.
 Meteor.publish(Comments.userPublicationName, function () {
-  if (this.userId) {
+  if (this.userId && !Roles.userIsInRole(this.userId, 'admin')) {
     const username = Meteor.users.findOne(this.userId).username;
     const profileId = Profiles.collection.findOne({ username: username });
     const visitIds = Visits.find({ profileId: profileId });
