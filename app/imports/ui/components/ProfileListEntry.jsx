@@ -7,25 +7,14 @@ import { NavLink } from 'react-router-dom';
 class ProfileListEntry extends React.Component {
   render() {
     return (
-        <Table.Cell>
-          <Button basic as={NavLink} activeClassName="active"
-                  exact to={`/admin-profile/${this.props.profile._id}`}>
-            {this.props.profile.username}
-          </Button>
-        </Table.Cell>
-    /* <Table.Row>
+        <Table.Row>
           <Table.Cell>
-            <Image centered size='tiny' rounded
-                             src={this.props.profile.imageURL}/>
+            <Button basic as={NavLink} activeClassName="active"
+                    exact to={`/admin-profile/${this.props.profile._id}`}>
+              {this.props.profile.username}
+            </Button>
           </Table.Cell>
-          <Table.Cell>{this.props.profile.lastName}</Table.Cell>
-          <Table.Cell>{this.props.profile.firstName}</Table.Cell>
-          <Table.Cell>{this.props.profile.sport}</Table.Cell>
-          <Table.Cell>{this.props.profile.age}</Table.Cell>
-          <Table.Cell>{this.props.profile.graduation}</Table.Cell>
-          <Table.Cell>{this.props.profile.major}</Table.Cell>
-
-        </Table.Row> */
+        </Table.Row>
     );
   }
 }

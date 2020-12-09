@@ -52,7 +52,29 @@ class ProfileList extends React.Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
+              <Table.Cell>
+              <SmartDataTable
+                  data={this.props.profiles.map(this.getColumns) }
+                  name="profile-list"
+                  className="ui compact selectable table"
+                  sortable
+                  onRowClick={this.onRowClick}
+                  withToggles
+                  perPage={25}
+                  // filterValue
+                  parseImg={{
+                    style: {
+                      border: '1px solid #ddd',
+                      borderRadius: '2px',
+                      padding: '3px',
+                      width: '100px',
+                      height: '100px',
+                    },
+                    className: 'ui avatar image',
+                  }}
+              />
+                {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
+              </Table.Cell>
             </Table.Body>
           </Table>
         </Container>
