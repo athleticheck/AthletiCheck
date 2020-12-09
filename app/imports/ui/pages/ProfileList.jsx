@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Divider, Header, Loader, Table } from 'semantic-ui-react';
+import _ from 'lodash'
+import { Container, Divider, Header, Loader, Table, Icon, Label, Button, Checkbox } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
@@ -8,6 +9,50 @@ import ProfileListEntry from '../components/ProfileListEntry';
 
 /** Renders a table containing all of the profiles. Use <Profile> to render each row. */
 class ProfileList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      column: 'name',
+      data: {this.props.profile}
+    }
+    this.handleSort = this.handleSort.bind(this)
+    this.handleLastName = this.handleLastName.bind(this)
+    this.handleFirstName = this.handleFirstName.bind(this)
+    this.handleSport = this.handleSport.bind(this)
+    this.handleAge = this.handleAge.bind(this)
+    this.handleGraduation = this.handleGraduation.bind(this)
+    this.handleMajor = this.handleMajor.bind(this)
+    this.handleColumn = this.handleColumn.bind(this)
+    }
+
+  handleLastName = (e, { value }) => this.setState({ lastName: value })
+  handleFirstName = (e, { value }) => this.setState({ firstName: value })
+  handleSport = (e, { value }) => this.setState({ sport: value })
+  handleAge = (e, { value }) => this.setState({ age: value })
+  handleGraduation = (e, { value }) => this.setState({ graduation: value })
+  handleMajor = (e, { value }) => this.setState({ major: value })
+  handleDirection = (e, { value }) => this.setState({ direction: value })
+  handleColumn = (e, { value }) => this.setState({ column: value })
+
+  handleSort = clickedColumn => () => {
+    const { column, data, direction } = this.state
+    console.log(column)
+    console.log(data)
+
+    if (column !== clickedColumn) {
+      this.setState({
+        column: clickedColumn,
+        data: _.sortBy(data, [clickedColumn]),
+        direction: 'ascending',
+      })
+      return
+    }
+
+    this.setState({
+      data: data.reverse(),
+      direction: direction === 'ascending' ? 'descending' : 'ascending',
+    })
+  }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
