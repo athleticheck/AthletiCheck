@@ -1,6 +1,6 @@
 import React from 'react';
 import SmartDataTable from 'react-smart-data-table';
-import { Loader, Container, Divider, Table, Header, Input, Redirect } from 'semantic-ui-react';
+import { Loader, Container, Divider, Table, Header, Input } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
@@ -22,13 +22,13 @@ class ProfileList extends React.Component {
       age: profile.age, graduation: profile.graduation, major: profile.major, profile: profile.username };
   }
 
-      onRowClick() {
+       /* onRowClick() {
         console.log('clicked');
         return <Redirect to={`/admin-profile/${this.props.profiles._id}`}/>;
       }
 
-  /*    /!** Handle Signin submission using Meteor's account mechanism. *!/
-    submit = () => {
+      /!** Handle Signin submission using Meteor's account mechanism. *!/
+    onRowClick = () => {
       const { email, password } = this.state;
       Meteor.loginWithPassword(email, password, (err) => {
         if (err) {
@@ -41,12 +41,11 @@ class ProfileList extends React.Component {
 
     /!** Render the signin form. *!/
     render() {
-      const { from } = this.props.location.state || { from: { pathname: '/profile' } };
+      const { from } = this.props.location.state || { from: { pathname: `/admin-profile/${this.props.profiles._id}` } };
       // if correct authentication, redirect to page instead of login screen
       if (this.state.redirectToReferer) {
         return <Redirect to={from}/>;
-      }
-  */
+      } */
 
   /** Render the Profile page */
   renderPage() {
