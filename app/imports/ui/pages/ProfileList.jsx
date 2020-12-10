@@ -11,6 +11,13 @@ import 'react-smart-data-table/dist/react-smart-data-table.css';
 
 /** Renders a table containing all of the profiles. Use <Profile> to render each row. */
 class ProfileList extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      filterValue: '',
+    };
+  }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -49,6 +56,9 @@ class ProfileList extends React.Component {
 
   /** Render the Profile page */
   renderPage() {
+    const {
+      filterValue,
+    } = this.state;
     return (
         <Container id="profileList-page">
           <Divider hidden/>
@@ -58,7 +68,7 @@ class ProfileList extends React.Component {
               icon='search'
               type='text'
               name='filterValue'
-              // value={this.props.profiles.lastName}
+              value={filterValue}
           />
           <Table size='large' celled padded striped stackable>
             <Table.Header fullWidth>
@@ -77,7 +87,7 @@ class ProfileList extends React.Component {
               onRowClick={this.onRowClick}
               withToggles
               perPage={25}
-              // filterValue
+              filterValue={filterValue}
               parseImg={{
                 style: {
                   border: '1px solid #ddd',
