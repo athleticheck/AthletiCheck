@@ -17,6 +17,7 @@ class ProfileList extends React.Component {
     this.state = {
       filterValue: '',
     };
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -27,6 +28,19 @@ class ProfileList extends React.Component {
   getColumns(profile) {
     return { athlete: profile.imageURL, lastName: profile.lastName, firstName: profile.firstName, sport: profile.sport,
       age: profile.age, graduation: profile.graduation, major: profile.major, profile: profile.username };
+  }
+
+  handleOnChange({ target: { name, value } }) {
+    this.setState({ [name]: value }, () => {
+      if (name === 'numResults') this.setNewData();
+    });
+  }
+
+  setNewData() {
+    const { data } = this.state;
+    this.setState({
+      data: data,
+    });
   }
 
        /* onRowClick() {
@@ -69,6 +83,7 @@ class ProfileList extends React.Component {
               type='text'
               name='filterValue'
               value={filterValue}
+              onChange={this.handleOnChange}
           />
           <Table size='large' celled padded striped stackable>
             <Table.Header fullWidth>
