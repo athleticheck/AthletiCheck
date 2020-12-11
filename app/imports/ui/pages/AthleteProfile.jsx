@@ -36,7 +36,7 @@ class AthleteProfile extends React.Component {
           <Container className='profile-page-spacing'>
             <Card.Group>
               {this.props.visits.length !== 0 ? ( // if there are visits, display them
-                  this.props.visits.map((visit, index) => <Visit key={index} visit={visit}/>)
+                  this.props.visits.reverse().map((visit, index) => <Visit key={index} visit={visit}/>)
               ) : ( // else, display an empty message
                   <Card fluid>
                     <Card.Content>

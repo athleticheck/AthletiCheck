@@ -28,7 +28,7 @@ Meteor.publish(Profiles.userPublicationName, function () {
 Meteor.publish(Visits.userPublicationName, function () {
   if (this.userId && !Roles.userIsInRole(this.userId, 'admin')) {
     const username = Meteor.users.findOne(this.userId).username;
-    const profileId = Profiles.collection.findOne({ username: username });
+    const profileId = Profiles.collection.findOne({ username: username })._id;
     return Visits.collection.find({ profileId: profileId });
   }
   return this.ready();
