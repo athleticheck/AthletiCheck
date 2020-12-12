@@ -4,7 +4,7 @@ import { Loader, Container, Divider, Table, Header, Input } from 'semantic-ui-re
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-// import { Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 import { Profiles } from '../../api/profile/Profiles';
 import 'react-smart-data-table/dist/react-smart-data-table.css';
 // import ProfileListEntry from '../components/ProfileListEntry';
@@ -18,7 +18,7 @@ class ProfileList extends React.Component {
       filterValue: '',
     };
     this.handleOnChange = this.handleOnChange.bind(this);
-    // this.onRowClick = this.onRowClick.bind(this);
+    this.onRowClick = this.onRowClick.bind(this);
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -28,7 +28,7 @@ class ProfileList extends React.Component {
 
   getColumns(profile) {
     return { athlete: profile.imageURL, lastName: profile.lastName, firstName: profile.firstName, sport: profile.sport,
-      age: profile.age, graduation: profile.graduation, major: profile.major, email: profile.username };
+      age: profile.age, graduation: profile.graduation, major: profile.major, email: 'profile.username' };
   }
 
   handleOnChange({ target: { name, value } }) {
@@ -42,6 +42,23 @@ class ProfileList extends React.Component {
     this.setState({
       data: data,
     });
+  }
+
+  onRowClick(event, { rowData }) {
+    const { showOnRowClick } = this.state;
+    if (showOnRowClick) {
+      const { id } = rowData;
+      let value = id;
+      if (!value) {
+        const [key] = Object.keys(rowData);
+        value = `${key}: ${rowData[key]}`;
+        console.log('Invalid');
+      }
+      /* eslint-disable no-alert */
+    } else {
+      console.log('Valid');
+    }
+    return <Redirect to={'/about'}/>;
   }
 
 /*   onRowClick() {
