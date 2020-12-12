@@ -4,7 +4,7 @@ import { Loader, Container, Divider, Table, Header, Input } from 'semantic-ui-re
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-// import { NavLink } from 'react-router-dom';
+// import { Redirect } from 'react-router';
 import { Profiles } from '../../api/profile/Profiles';
 import 'react-smart-data-table/dist/react-smart-data-table.css';
 // import ProfileListEntry from '../components/ProfileListEntry';
@@ -18,6 +18,7 @@ class ProfileList extends React.Component {
       filterValue: '',
     };
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.onRowClick = this.onRowClick.bind(this);
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -43,30 +44,32 @@ class ProfileList extends React.Component {
     });
   }
 
-       /* onRowClick() {
-        console.log('clicked');
-        return <Redirect to={`/admin-profile/${this.props.profiles._id}`}/>;
-      }
+/*   onRowClick() {
+    console.log('clicked');
+    return <Redirect to={'/about'}/>;
+    console.log(this.props.profiles);
+    this.setState({ redirect: '/about' });
+  } */
 
-      /!** Handle Signin submission using Meteor's account mechanism. *!/
-    onRowClick = () => {
-      const { email, password } = this.state;
-      Meteor.loginWithPassword(email, password, (err) => {
-        if (err) {
-          this.setState({ error: err.reason });
-        } else {
-          this.setState({ error: '', redirectToReferer: true });
-        }
-      });
+  /* /!** Handle Signin submission using Meteor's account mechanism. *!/
+onRowClick = () => {
+  const { email, password } = this.state;
+  Meteor.loginWithPassword(email, password, (err) => {
+    if (err) {
+      this.setState({ error: err.reason });
+    } else {
+      this.setState({ error: '', redirectToReferer: true });
     }
+  });
+} */
 
-    /!** Render the signin form. *!/
-    render() {
-      const { from } = this.props.location.state || { from: { pathname: `/admin-profile/${this.props.profiles._id}` } };
-      // if correct authentication, redirect to page instead of login screen
-      if (this.state.redirectToReferer) {
-        return <Redirect to={from}/>;
-      } */
+  /* /!** Render the signin form. *!/
+  render() {
+    const { from } = this.props.location.state || { from: { pathname: `/admin-profile/${this.props.profiles._id}` } };
+    // if correct authentication, redirect to page instead of login screen
+    if (this.state.redirectToReferer) {
+      return <Redirect to={from}/>;
+    } */
 
   /** Render the Profile page */
   renderPage() {
