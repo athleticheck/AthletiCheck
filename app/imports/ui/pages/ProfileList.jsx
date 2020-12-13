@@ -48,6 +48,7 @@ class ProfileList extends React.Component {
     const { showOnRowClick } = this.state;
     if (showOnRowClick) {
       const { id } = rowData;
+      // const page = Object(rowData.page);
       let value = id;
       if (!value) {
         const [key] = Object.keys(rowData);
@@ -56,7 +57,9 @@ class ProfileList extends React.Component {
       }
       /* eslint-disable no-alert */
     } else {
-      console.log('Valid');
+      // const { from } = this.props.profiles || { from: { pathname: '/profile' } };
+      console.log([Object(rowData.page)]);
+      <Redirect to={'/about'}/>;
     }
     return <Redirect to={'/about'}/>;
   }
