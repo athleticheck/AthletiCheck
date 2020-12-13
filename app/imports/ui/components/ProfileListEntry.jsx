@@ -9,6 +9,7 @@ class ProfileListEntry extends React.Component {
     return (
         <Table.Row>
           <Table.Cell>
+            {this.props.profile.lastName}
             <Button basic as={NavLink} activeClassName="active"
                     exact to={`/admin-profile/${this.props.profile._id}`}>
               {this.props.profile.username}

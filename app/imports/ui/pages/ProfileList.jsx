@@ -117,7 +117,7 @@ onRowClick = () => {
               </Table.Row>
             </Table.Header>
           </Table>
-          <Grid columns={2}>
+          <Grid columns={2} stackable container>
             <Grid.Column width={13}>
               <SmartDataTable
                   data={this.props.profiles.map(this.getColumns) }
@@ -149,7 +149,9 @@ onRowClick = () => {
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
-              {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
+                <Table.Body>
+                  {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
+                </Table.Body>
               </Table>
             </Grid.Column>
           </Grid>
