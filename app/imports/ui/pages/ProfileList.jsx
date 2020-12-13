@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 // import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 import { Profiles } from '../../api/profile/Profiles';
 import 'react-smart-data-table/dist/react-smart-data-table.css';
 import ProfileListEntry from '../components/ProfileListEntry';
@@ -17,9 +18,11 @@ class ProfileList extends React.Component {
 
     this.state = {
       filterValue: '',
+      redirectToProfile: false,
+      profileId: undefined,
     };
     this.handleOnChange = this.handleOnChange.bind(this);
-    // this.onRowClick = this.onRowClick.bind(this);
+    this.onRowClick = this.onRowClick.bind(this);
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -43,6 +46,11 @@ class ProfileList extends React.Component {
     this.setState({
       data: data,
     });
+  }
+
+  onRowClick = (event, { rowData }) => {
+    const profileId = Profiles.collection.findOne({ username: rowData.email })._id;
+    this.setState({ profileId: profileId, redirectToProfile: true });
   }
 
   /*   onRowClick(event, { rowData }) {
@@ -93,6 +101,10 @@ onRowClick = () => {
 
   /** Render the Profile page */
   renderPage() {
+    // if row has been clicked, redirect to athlete page
+    if (this.state.redirectToProfile) {
+      return <Redirect to={`/admin-profile/${this.state.profileId}/`}/>;
+    }
     const {
       filterValue,
     } = this.state;
@@ -124,7 +136,7 @@ onRowClick = () => {
                   name="profile-list"
                   className="ui compact selectable table"
                   sortable
-                  // onRowClick={this.onRowClick}
+                  onRowClick={this.onRowClick}
                   withToggles
                   perPage={25}
                   filterValue={filterValue}
