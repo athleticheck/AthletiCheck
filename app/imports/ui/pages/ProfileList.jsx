@@ -19,7 +19,7 @@ class ProfileList extends React.Component {
       filterValue: '',
     };
     this.handleOnChange = this.handleOnChange.bind(this);
-    this.onRowClick = this.onRowClick.bind(this);
+    // this.onRowClick = this.onRowClick.bind(this);
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -124,7 +124,7 @@ onRowClick = () => {
                   name="profile-list"
                   className="ui compact selectable table"
                   sortable
-                  onRowClick={this.onRowClick}
+                  // onRowClick={this.onRowClick}
                   withToggles
                   perPage={25}
                   filterValue={filterValue}
