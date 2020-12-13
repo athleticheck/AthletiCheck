@@ -9,6 +9,7 @@ import Visit from '../components/Visit';
 import Profile from '../components/Profile';
 import { Profiles } from '../../api/profile/Profiles';
 import { Visits } from '../../api/visit/Visits';
+import { Comments } from '../../api/comment/Comments';
 
 /** Renders the Page. */
 class AthleteProfile extends React.Component {
@@ -36,7 +37,8 @@ class AthleteProfile extends React.Component {
           <Container className='profile-page-spacing'>
             <Card.Group>
               {this.props.visits.length !== 0 ? ( // if there are visits, display them
-                  this.props.visits.reverse().map((visit, index) => <Visit key={index} visit={visit}/>)
+                  this.props.visits.reverse().map((visit, index) => <Visit key={index}
+                    visit={visit} comments={this.props.comments.filter(comment => comment.visitId === visit._id)}/>)
               ) : ( // else, display an empty message
                   <Card fluid>
                     <Card.Content>
@@ -57,6 +59,7 @@ class AthleteProfile extends React.Component {
 AthleteProfile.propTypes = {
   profile: PropTypes.array.isRequired, // should be obj, but see fix on line 24
   visits: PropTypes.array.isRequired,
+  comments: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -65,9 +68,11 @@ export default withTracker(() => {
   // Get access to Profiles and Visits documents.
   const ProfilesSubscription = Meteor.subscribe(Profiles.userPublicationName);
   const VisitsSubscription = Meteor.subscribe(Visits.userPublicationName);
+  const CommentsSubscription = Meteor.subscribe(Comments.userPublicationName);
   return {
     profile: Profiles.collection.find({}).fetch(),
     visits: Visits.collection.find({}).fetch(),
-    ready: ProfilesSubscription.ready() && VisitsSubscription.ready(),
+    comments: Comments.collection.find({}).fetch(),
+    ready: ProfilesSubscription.ready() && VisitsSubscription.ready() && CommentsSubscription.ready(),
   };
 })(AthleteProfile);

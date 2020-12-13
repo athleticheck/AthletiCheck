@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import Profile from '../components/Profile';
 import { Profiles } from '../../api/profile/Profiles';
 import { Visits } from '../../api/visit/Visits';
+import { Comments } from '../../api/comment/Comments';
 import Visit from '../components/Visit';
 
 /** Renders the Page. */
@@ -19,7 +20,7 @@ class AdminAthleteProfile extends React.Component {
 
   /** Render the Admin Profile page */
   renderAdminProfilePage() {
-    // define the profile and visits associated with athlete
+    // define the profile, visits, and comments associated with athlete
     const profile = Profiles.collection.findOne(this.props.profileId);
     const visits = Visits.collection.find({ profileId: this.props.profileId }).fetch();
     return (
@@ -50,7 +51,8 @@ class AdminAthleteProfile extends React.Component {
           <Container className='profile-page-spacing'>
             <Card.Group>
               {visits.length !== 0 ? ( // if there are visits, display them
-                  visits.reverse().map((visit, index) => <Visit key={index} visit={visit}/>)
+                  visits.reverse().map((visit, index) => <Visit key={index}
+                    visit={visit} comments={Comments.collection.find({ visitId: visit._id }).fetch()}/>)
               ) : ( // else, display an empty message
                   <Card fluid>
                     <Card.Content>
@@ -80,9 +82,10 @@ const AdminAthleteProfileWithTracker = withTracker(({ match }) => {
   // Get access to Profiles and Visits documents.
   const ProfilesSubscription = Meteor.subscribe(Profiles.adminPublicationName);
   const VisitsSubscription = Meteor.subscribe(Visits.adminPublicationName);
+  const CommentsSubscription = Meteor.subscribe(Comments.adminPublicationName);
   return {
     profileId: profileId,
-    ready: ProfilesSubscription.ready() && VisitsSubscription.ready(),
+    ready: ProfilesSubscription.ready() && VisitsSubscription.ready() && CommentsSubscription.ready(),
   };
 })(AdminAthleteProfile);
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
