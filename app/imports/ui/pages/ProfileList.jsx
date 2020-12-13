@@ -4,7 +4,7 @@ import { Loader, Container, Divider, Table, Header, Input, Grid } from 'semantic
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 import { Profiles } from '../../api/profile/Profiles';
 import 'react-smart-data-table/dist/react-smart-data-table.css';
 import ProfileListEntry from '../components/ProfileListEntry';
@@ -65,11 +65,11 @@ class ProfileList extends React.Component {
       return <Redirect to={'/about'}/>;
     } */
 
-  onRowClick() {
+  /* onRowClick() {
     console.log('clicked');
     <Redirect to={'/about'}/>;
     // this.setState({ redirect: '/about' });
-  }
+  } */
 
   /* /!** Handle Signin submission using Meteor's account mechanism. *!/
 onRowClick = () => {

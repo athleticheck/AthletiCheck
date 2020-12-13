@@ -9,7 +9,8 @@ class ProfileListEntry extends React.Component {
     return (
         <Table.Row>
           <Table.Cell>
-            {this.props.profile.lastName}
+            <Image centered size='tiny' circular
+                   src={this.props.profile.imageURL}/>
             <Button basic as={NavLink} activeClassName="active"
                     exact to={`/admin-profile/${this.props.profile._id}`}>
               {this.props.profile.username}
