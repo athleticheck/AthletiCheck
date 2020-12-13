@@ -1,12 +1,13 @@
 import React from 'react';
 import SmartDataTable from 'react-smart-data-table';
-import { Loader, Container, Divider, Table, Header, Input } from 'semantic-ui-react';
+import { Loader, Container, Divider, Table, Header, Input, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Redirect } from 'react-router';
 import { Profiles } from '../../api/profile/Profiles';
 import 'react-smart-data-table/dist/react-smart-data-table.css';
+import ProfileListEntry from '../components/ProfileListEntry';
 // import ProfileListEntry from '../components/ProfileListEntry';
 
 /** Renders a table containing all of the profiles. Use <Profile> to render each row. */
@@ -44,32 +45,31 @@ class ProfileList extends React.Component {
     });
   }
 
-  onRowClick(event, { rowData }) {
-    const { showOnRowClick } = this.state;
-    if (showOnRowClick) {
-      const { id } = rowData;
-      // const page = Object(rowData.page);
-      let value = id;
-      if (!value) {
-        const [key] = Object.keys(rowData);
-        value = `${key}: ${rowData[key]}`;
-        console.log('Invalid');
+  /*   onRowClick(event, { rowData }) {
+      const { showOnRowClick } = this.state;
+      if (showOnRowClick) {
+        const { id } = rowData;
+        // const page = Object(rowData.page);
+        let value = id;
+        if (!value) {
+          const [key] = Object.keys(rowData);
+          value = `${key}: ${rowData[key]}`;
+          console.log('Invalid');
+        }
+        /!* eslint-disable no-alert *!/
+      } else {
+        // const { from } = this.props.profiles || { from: { pathname: '/profile' } };
+        console.log([Object(rowData.page)]);
+        <Redirect to={'/about'}/>;
       }
-      /* eslint-disable no-alert */
-    } else {
-      // const { from } = this.props.profiles || { from: { pathname: '/profile' } };
-      console.log([Object(rowData.page)]);
-      <Redirect to={'/about'}/>;
-    }
-    return <Redirect to={'/about'}/>;
-  }
+      return <Redirect to={'/about'}/>;
+    } */
 
-/*   onRowClick() {
+  onRowClick() {
     console.log('clicked');
-    return <Redirect to={'/about'}/>;
-    console.log(this.props.profiles);
-    this.setState({ redirect: '/about' });
-  } */
+    <Redirect to={'/about'}/>;
+    // this.setState({ redirect: '/about' });
+  }
 
   /* /!** Handle Signin submission using Meteor's account mechanism. *!/
 onRowClick = () => {
@@ -117,26 +117,35 @@ onRowClick = () => {
               </Table.Row>
             </Table.Header>
           </Table>
-          <SmartDataTable
-              data={this.props.profiles.map(this.getColumns) }
-              name="profile-list"
-              className="ui compact selectable table"
-              sortable
-              onRowClick={this.onRowClick}
-              withToggles
-              perPage={25}
-              filterValue={filterValue}
-              parseImg={{
-                style: {
-                  border: '1px solid #ddd',
-                  borderRadius: '2px',
-                  padding: '3px',
-                  width: '100px',
-                  height: '100px',
-                },
-                className: 'ui avatar image',
-              }}
-          />
+          <Grid columns={2} divided>
+            <Grid.Column width={15}>
+              <SmartDataTable
+                  data={this.props.profiles.map(this.getColumns) }
+                  name="profile-list"
+                  className="ui compact selectable table"
+                  sortable
+                  onRowClick={this.onRowClick}
+                  withToggles
+                  perPage={25}
+                  filterValue={filterValue}
+                  parseImg={{
+                    style: {
+                      border: '1px solid #ddd',
+                      borderRadius: '2px',
+                      padding: '3px',
+                      width: '100px',
+                      height: '100px',
+                    },
+                    className: 'ui avatar image',
+                  }}
+              />
+            </Grid.Column>
+            <Grid.Column width={2}>
+              <Table celled padded striped stackable>
+              {this.props.profiles.map((profile) => <ProfileListEntry key={profile._id} profile={profile} />)}
+              </Table>
+            </Grid.Column>
+          </Grid>
           <Divider hidden/>
         </Container>
     );
