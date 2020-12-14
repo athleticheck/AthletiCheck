@@ -15,30 +15,27 @@ class AdminAthleteProfile extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready && this.props.profileId) ? this.renderAdminProfilePage() : <Loader active>Getting Data</Loader>;
+    return (this.props.ready) ? this.renderAdminProfilePage() : <Loader active>Getting Data</Loader>;
   }
 
   /** Render the Admin Profile page */
   renderAdminProfilePage() {
-    // define the profile, visits, and comments associated with athlete
-    const profile = Profiles.collection.findOne(this.props.profileId);
-    const visits = Visits.collection.find({ profileId: this.props.profileId }).fetch();
     return (
         <Container id="adminProfile-page">
           <Container textAlign='center' className="profile-page-spacing">
             <Divider horizontal>
               <Button
                   size='massive' inverted color='green' as={NavLink}
-                  activeClassName="active" exact to={`/add-visit/${profile._id}`}>
+                  activeClassName="active" exact to={`/add-visit/${this.props.profile._id}`}>
                 Add New Visit
               </Button>
             </Divider>
           </Container>
           <Card fluid centered className="profile-page-profile">
-            <Profile profile={profile}/>
+            <Profile profile={this.props.profile}/>
             <Card.Content extra>
               <Button fluid as={NavLink} activeClassName="active"
-                      exact to={`/edit-profile/${profile._id}`}>
+                      exact to={`/edit-profile/${this.props.profile._id}`}>
                 Edit Profile
               </Button>
             </Card.Content>
@@ -50,9 +47,10 @@ class AdminAthleteProfile extends React.Component {
           </Container>
           <Container className='profile-page-spacing'>
             <Card.Group>
-              {visits.length !== 0 ? ( // if there are visits, display them
-                  visits.reverse().map((visit, index) => <Visit key={index} visit={visit}
-                    athlete={profile.username} comments={Comments.collection.find({ visitId: visit._id }).fetch()}/>)
+              {this.props.visits.length !== 0 ? ( // if there are visits, display them
+                  this.props.visits.reverse().map((visit, index) => <Visit key={index}
+                    profileId={this.props.profile._id} visit={visit}
+                    comments={this.props.comments.filter(comment => comment.visitId === visit._id)}/>)
               ) : ( // else, display an empty message
                   <Card fluid>
                     <Card.Content>
@@ -71,7 +69,10 @@ class AdminAthleteProfile extends React.Component {
 
 /** Require data to be passed to this component. */
 AdminAthleteProfile.propTypes = {
-  profileId: PropTypes.string.isRequired,
+  // the 'profile' prop throws an error as being undefined, but it loads by the time the page is displayed
+  profile: PropTypes.object.isRequired,
+  visits: PropTypes.array.isRequired,
+  comments: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -84,7 +85,9 @@ const AdminAthleteProfileWithTracker = withTracker(({ match }) => {
   const VisitsSubscription = Meteor.subscribe(Visits.adminPublicationName);
   const CommentsSubscription = Meteor.subscribe(Comments.adminPublicationName);
   return {
-    profileId: profileId,
+    profile: Profiles.collection.findOne(profileId),
+    visits: Visits.collection.find({ profileId: profileId }).fetch(),
+    comments: Comments.collection.find({ profileId: profileId }).fetch(),
     ready: ProfilesSubscription.ready() && VisitsSubscription.ready() && CommentsSubscription.ready(),
   };
 })(AdminAthleteProfile);

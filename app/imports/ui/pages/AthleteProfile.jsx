@@ -38,7 +38,7 @@ class AthleteProfile extends React.Component {
             <Card.Group>
               {this.props.visits.length !== 0 ? ( // if there are visits, display them
                   this.props.visits.reverse().map((visit, index) => <Visit key={index}
-                    visit={visit} athlete={this.props.profile[0].username}
+                    profileId={this.props.profile[0]._id} visit={visit}
                     comments={this.props.comments.filter(comment => comment.visitId === visit._id)}/>)
               ) : ( // else, display an empty message
                   <Card fluid>
@@ -58,7 +58,7 @@ class AthleteProfile extends React.Component {
 
 /** Require data to be passed to this component. */
 AthleteProfile.propTypes = {
-  profile: PropTypes.array.isRequired, // should be obj, but see fix on line 24
+  profile: PropTypes.array.isRequired, // should be obj, but see fix on line 30
   visits: PropTypes.array.isRequired,
   comments: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,

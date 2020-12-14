@@ -36,7 +36,7 @@ class Visit extends React.Component {
             </Feed>
           </Card.Content>
           <Card.Content extra>
-            <AddComment author={Meteor.user().username} athlete={this.props.athlete} visitId={this.props.visit._id}/>
+            <AddComment profileId={this.props.profileId} visitId={this.props.visit._id} author={Meteor.user().username}/>
           </Card.Content>
         </Card>
     );
@@ -45,8 +45,8 @@ class Visit extends React.Component {
 
 /** Require a document to be passed to this component. */
 Visit.propTypes = {
+  profileId: PropTypes.string.isRequired,
   visit: PropTypes.object.isRequired,
-  athlete: PropTypes.string.isRequired,
   comments: PropTypes.array.isRequired,
 };
 

@@ -13,8 +13,8 @@ class AddVisit extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { visitId, date, author, athlete, comment } = data;
-    Comments.collection.insert({ visitId, date, author, athlete, comment },
+    const { profileId, visitId, date, author, comment } = data;
+    Comments.collection.insert({ profileId, visitId, date, author, comment },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
@@ -34,10 +34,10 @@ class AddVisit extends React.Component {
             <TextField label="Add a timestamped comment" name="comment"/>
             <SubmitField value='Submit'/>
             <ErrorsField/>
-            <HiddenField name="author" value={this.props.author}/>
-            <HiddenField name="athlete" value={this.props.athlete}/>
+            <HiddenField name="profileId" value={this.props.profileId}/>
             <HiddenField name="visitId" value={this.props.visitId}/>
             <HiddenField name="date" value={new Date()}/>
+            <HiddenField name="author" value={this.props.author}/>
           </Segment>
         </AutoForm>
     );
@@ -46,9 +46,9 @@ class AddVisit extends React.Component {
 
 /** Require documents to be passed to this component. */
 AddVisit.propTypes = {
-  author: PropTypes.string.isRequired,
-  athlete: PropTypes.string.isRequired,
+  profileId: PropTypes.string.isRequired,
   visitId: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
 };
 
 export default AddVisit;
