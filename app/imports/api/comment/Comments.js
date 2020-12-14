@@ -14,6 +14,7 @@ class CommentsCollection {
       visitId: String,
       date: Date,
       author: String,
+      athlete: String,
       comment: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

@@ -38,7 +38,8 @@ class AthleteProfile extends React.Component {
             <Card.Group>
               {this.props.visits.length !== 0 ? ( // if there are visits, display them
                   this.props.visits.reverse().map((visit, index) => <Visit key={index}
-                    visit={visit} comments={this.props.comments.filter(comment => comment.visitId === visit._id)}/>)
+                    visit={visit} athlete={this.props.profile[0].username}
+                    comments={this.props.comments.filter(comment => comment.visitId === visit._id)}/>)
               ) : ( // else, display an empty message
                   <Card fluid>
                     <Card.Content>

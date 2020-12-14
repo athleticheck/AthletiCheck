@@ -38,12 +38,12 @@ Meteor.publish(Visits.userPublicationName, function () {
 Meteor.publish(Comments.userPublicationName, function () {
   if (this.userId && !Roles.userIsInRole(this.userId, 'admin')) {
     const username = Meteor.users.findOne(this.userId).username;
-    const profileId = Profiles.collection.findOne({ username: username });
-    const visits = Visits.collection.find({ profileId: profileId });
-    const comments = [];
-    // _.each(visitId, (visit) => { comments.concat(Comments.collection.find({ visitId: visit })); });
-    visits.forEach((visit) => { comments.concat(Comments.collection.find({ visitId: visit._id }).fetch()); });
-    return comments;
+    // const profileId = Profiles.collection.findOne({ username: username });
+    // const visits = Visits.collection.find({ profileId: profileId });
+    // const comments = [];
+    // visits.forEach((visit) => { comments.concat(Comments.collection.find({ visitId: visit._id }).fetch()); });
+    // return comments;
+    return Comments.collection.find({ athlete: username });
   }
   return this.ready();
 });
