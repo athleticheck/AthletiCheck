@@ -10,6 +10,10 @@ class SignoutPage {
   async isDisplayed(testController) {
     await testController.expect(this.pageSelector.exists).ok();
   }
+
+  async gotoHomePage(testController) {
+    await testController.click('#signout-HomePage');
+  }
 }
 
 export const signoutPage = new SignoutPage();

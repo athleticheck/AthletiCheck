@@ -2,7 +2,7 @@ import { Selector } from 'testcafe';
 
 class NavBar {
 
-  /** If someone is logged in, then log them out, otherwise do nothing. */
+  /** If someone is logged in, then log them out, otherwise do nothing. Done */
   async ensureLogout(testController) {
     const loggedInUser = await Selector('#navbar-current-user').exists;
     if (loggedInUser) {
@@ -13,7 +13,6 @@ class NavBar {
 
   async gotoSigninPage(testController) {
     await this.ensureLogout(testController);
-    await testController.click('#login-dropdown');
     await testController.click('#login-dropdown-sign-in');
   }
 
