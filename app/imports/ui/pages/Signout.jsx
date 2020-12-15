@@ -18,7 +18,7 @@ export default class Signout extends React.Component {
               Click here to Sign In
             </Button.Content>
           </Button>
-            <Button
+            <Button id="signout-HomePage"
                   as={NavLink} activeClassName="active"exact to="/">
             <Button.Content>
               Click here to go Home

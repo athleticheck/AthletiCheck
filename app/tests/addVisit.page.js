@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-class addVisitPage {
+class AddVisitPage {
   constructor() {
     this.pageId = '#addVisit-page';
     this.pageSelector = Selector(this.pageId);
@@ -11,4 +11,4 @@ class addVisitPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 }
-export const addVisitPage = new addVisitPage();
+export const addVisitPage = new AddVisitPage();

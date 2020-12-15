@@ -28,8 +28,8 @@ class NavBar extends React.Component {
         {this.props.currentUser === '' ? (
             <Menu.Item position="right"> {/* zero padding!!! */}
               <Menu secondary stackable id="right-nav-bar">
-                <Menu.Item name='Join' as={NavLink} exact to="/signup" content='JOIN'/>
-                <Menu.Item name='Signin' as={NavLink} exact to="/signin" content='SIGN IN'/>
+                <Menu.Item id="login-dropdown-sign-up" name='Join' as={NavLink} exact to="/signup" content='JOIN'/>
+                <Menu.Item id="login-dropdown-sign-in" name='Signin' as={NavLink} exact to="/signin" content='SIGN IN'/>
               </Menu>
             </Menu.Item>
         ) : (

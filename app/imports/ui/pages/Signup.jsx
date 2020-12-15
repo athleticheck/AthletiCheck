@@ -65,6 +65,7 @@ class Signup extends React.Component {
                 <Segment stacked>
                   <Form.Input
                       label="First Name"
+                      id="signup-form-firstname"
                       icon="user"
                       iconPosition="left"
                       name="firstName"
@@ -74,6 +75,7 @@ class Signup extends React.Component {
                   />
                   <Form.Input
                       label="Last Name"
+                      id="signup-form-lastname"
                       icon="user"
                       iconPosition="left"
                       name="lastName"
@@ -84,6 +86,7 @@ class Signup extends React.Component {
 
                   <Form.Input
                       label="Email"
+                      id="signup-form-email"
                       icon="user"
                       iconPosition="left"
                       name="email"
@@ -93,6 +96,7 @@ class Signup extends React.Component {
                   />
                   <Form.Input
                       label="Password"
+                      id="signup-form-password"
                       icon="lock"
                       iconPosition="left"
                       name="password"

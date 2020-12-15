@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-class editProfilePage {
+class EditProfilePage {
   constructor() {
     this.pageId = '#editProfile-page';
     this.pageSelector = Selector(this.pageId);
@@ -11,4 +11,4 @@ class editProfilePage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 }
-export const editProfilePage = new editProfilePage();
+export const editProfilePage = new EditProfilePage();

@@ -10,6 +10,10 @@ class LandingPage {
   async isDisplayed(testController) {
     await testController.expect(this.pageSelector.exists).ok();
   }
+
+  async gotoAboutUsPage(testController) {
+    await testController.click('#landing-aboutUs');
+  }
 }
 
 export const landingPage = new LandingPage();
