@@ -66,7 +66,7 @@ AthleteProfile.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  // Get access to Profiles and Visits documents.
+  // Get access to Profiles, Visits, and Comments documents.
   const ProfilesSubscription = Meteor.subscribe(Profiles.userPublicationName);
   const VisitsSubscription = Meteor.subscribe(Visits.userPublicationName);
   const CommentsSubscription = Meteor.subscribe(Comments.userPublicationName);

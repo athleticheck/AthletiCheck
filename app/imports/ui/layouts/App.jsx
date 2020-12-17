@@ -12,18 +12,13 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import NotFound from '../pages/NotFound';
+import AboutUs from '../pages/AboutUs';
 /* NEW IMPORTS */
 import AthleteProfile from '../pages/AthleteProfile';
 import AdminAthleteProfile from '../pages/AdminAthleteProfile';
 import EditProfile from '../pages/EditProfile';
 import AddVisit from '../pages/AddVisit';
 import ProfileList from '../pages/ProfileList';
-/* OLD IMPORTS, DELETE BEFORE FINAL SUBMISSION */
-import ListStuffOLD from '../pages/ListStuff';
-import ListStuffAdminOLD from '../pages/ListStuffAdmin';
-import AddStuffOLD from '../pages/AddStuff';
-import EditStuffOLD from '../pages/EditStuff';
-import AboutUs from '../pages/AboutUs';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -45,15 +40,9 @@ class App extends React.Component {
               <AdminProtectedRoute path="/add-visit/:_id" component={AddVisit}/>
               <AdminProtectedRoute path="/profile-list" component={ProfileList}/>
               <Route path="/about" component={AboutUs}/>
-              {/* OLD PATHS, DELETE BEFORE FINAL SUBMISSION */}
-              <ProtectedRoute path="/list" component={ListStuffOLD}/>
-              <ProtectedRoute path="/add" component={AddStuffOLD}/>
-              <ProtectedRoute path="/edit/:_id" component={EditStuffOLD}/>
-              <AdminProtectedRoute path="/admin" component={ListStuffAdminOLD}/>
-              {/* NEED TO EDIT NotFound PAGE */}
               <Route component={NotFound}/>
             </Switch>
-            <Footer/>                                                          {/* EDIT Footer */}
+            <Footer/>
           </div>
         </Router>
     );

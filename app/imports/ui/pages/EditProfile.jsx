@@ -29,7 +29,7 @@ class EditProfile extends React.Component {
           if (error) {
             swal('Error', error.message, 'error');
           } else {
-            swal('Success', 'Item updated successfully', 'success');
+            swal('Success', 'Profile updated successfully', 'success');
             this.setState({ redirectToProfile: true });
           }
         });
@@ -87,7 +87,7 @@ EditProfile.propTypes = {
 export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const profileId = match.params._id;
-  // Get access to Stuff documents.
+  // Get access to Profiles documents.
   const ProfilesSubscription = Meteor.subscribe(Profiles.adminPublicationName);
   return {
     profile: Profiles.collection.findOne(profileId),

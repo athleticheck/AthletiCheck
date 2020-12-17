@@ -7,23 +7,6 @@ import { withRouter } from 'react-router-dom';
 class Comment extends React.Component {
   render() {
     return (
-        // <Container>
-        //   <Divider/>
-        //   <Feed.Event>
-        //     <Feed.Date as='comment-date-display'>
-        //       {this.props.comment.date.toLocaleDateString('en-US')}
-        //     </Feed.Date>
-        //     <Feed.Content>
-        //       <Feed.Summary>
-        //         by <Feed.User>{this.props.comment.author}</Feed.User>
-        //       </Feed.Summary>
-        //       <Feed.Summary>
-        //         {this.props.comment.comment}
-        //       </Feed.Summary>
-        //       <Feed.Extra/>
-        //     </Feed.Content>
-        //   </Feed.Event>
-        // </Container>
         <Container>
           <Divider/>
           <Feed.Event>
