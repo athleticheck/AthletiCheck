@@ -5,6 +5,7 @@ import { navBar } from './navbar.component';
 import { profilePage } from './profile.page';
 import { profileListPage } from './profileList.page';
 import { aboutUsPage } from './aboutUs.page';
+import { signupPage } from './signup.page';
 
 /* global fixture:false, test:false */
 
@@ -35,6 +36,16 @@ test('Testing for aboutUs page to display', async (testController) => {
   await aboutUsPage.isDisplayed(testController);
 });
 
+test('Test that signup page, then logout works', async (testController) => {
+  // Create a new user email address that's guaranteed to be unique.
+  const newUser = `user-${new Date().getTime()}@foo.com`;
+  await navBar.gotoSignupPage(testController);
+  await signupPage.isDisplayed(testController);
+  await signupPage.signupUser(testController, newUser, credentials.password);
+  // New user has successfully logged in, so now let's logout.
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
 
 test('Test that Profile page works and shows up', async (testController) => {
   await navBar.gotoSigninPage(testController);
