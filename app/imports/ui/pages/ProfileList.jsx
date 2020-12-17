@@ -106,7 +106,7 @@ class ProfileList extends React.Component {
   }
 }
 
-/** Require an array of Stuff documents in the props. */
+/** Require an array of documents in the props. */
 ProfileList.propTypes = {
   profiles: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,

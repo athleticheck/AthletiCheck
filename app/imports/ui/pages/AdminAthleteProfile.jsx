@@ -80,7 +80,7 @@ AdminAthleteProfile.propTypes = {
 const AdminAthleteProfileWithTracker = withTracker(({ match }) => {
   // Get the profileID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const profileId = match.params._id;
-  // Get access to Profiles and Visits documents.
+  // Get access to Profiles, Visits, and Comments documents.
   const ProfilesSubscription = Meteor.subscribe(Profiles.adminPublicationName);
   const VisitsSubscription = Meteor.subscribe(Visits.adminPublicationName);
   const CommentsSubscription = Meteor.subscribe(Comments.adminPublicationName);

@@ -39,7 +39,7 @@ class AddVisit extends React.Component {
           if (error) {
             swal('Error', error.message, 'error');
           } else {
-            swal('Success', 'Item added successfully', 'success');
+            swal('Success', 'Visit added successfully', 'success');
             this.setState({ redirectToProfile: true });
             // window.location.href = `/admin-profile/${this.props.profileId}/`; // use constructor method
           }
